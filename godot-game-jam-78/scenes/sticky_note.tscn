@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://p5r5yq3ejujd"]
+
+[ext_resource type="PackedScene" uid="uid://6ulo4o4kv6k0" path="res://assets/models/sticky_note.glb" id="1_keat6"]
+[ext_resource type="PackedScene" uid="uid://cuu81db35lgvl" path="res://scenes/sticky_notes_ui.tscn" id="2_juber"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_a4ls4"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q64qn"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_a4ls4")
+
+[node name="sticky_note" instance=ExtResource("1_keat6")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+
+[node name="Plane" parent="." index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_q64qn")
+
+[node name="SubViewport" type="SubViewport" parent="." index="1"]
+
+[node name="Control" parent="SubViewport" index="0" instance=ExtResource("2_juber")]

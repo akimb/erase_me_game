@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://3c0bv7nu2lbs"]
+
+[ext_resource type="PackedScene" uid="uid://crlk8idxtjw1r" path="res://assets/models/phone.glb" id="1_ohh38"]
+[ext_resource type="Script" path="res://scripts/phone.gd" id="2_37upd"]
+[ext_resource type="Material" uid="uid://c34d8ninlnreo" path="res://resources/phone_atlas.tres" id="2_vgtvu"]
+[ext_resource type="FontFile" uid="uid://dvg71ayuh54rl" path="res://assets/models/LCDM2B__.TTF" id="4_d4aai"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nfmv4"]
+size = Vector3(20.9575, 10.2802, 20.5064)
+
+[node name="phone" node_paths=PackedStringArray("mesh") instance=ExtResource("1_ohh38")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
+script = ExtResource("2_37upd")
+mesh = NodePath("phone")
+
+[node name="phonecord" parent="." index="0"]
+material_override = ExtResource("2_vgtvu")
+
+[node name="phone_receiver" parent="." index="1"]
+surface_material_override/0 = ExtResource("2_vgtvu")
+
+[node name="phone" parent="." index="2"]
+material_override = ExtResource("2_vgtvu")
+
+[node name="phone_numpad1" parent="." index="3"]
+surface_material_override/0 = ExtResource("2_vgtvu")
+
+[node name="phone_numpad2" parent="." index="4"]
+surface_material_override/0 = ExtResource("2_vgtvu")
+
+[node name="phone_buttons1" parent="." index="5"]
+surface_material_override/0 = ExtResource("2_vgtvu")
+
+[node name="phone_buttons2" parent="." index="6"]
+surface_material_override/0 = ExtResource("2_vgtvu")
+
+[node name="phone_buttons3" parent="." index="7"]
+surface_material_override/0 = ExtResource("2_vgtvu")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.889313, 4.64008, -0.12027)
+shape = SubResource("BoxShape3D_nfmv4")
+
+[node name="Phone Light" type="OmniLight3D" parent="." index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.61283, 6.92959, -1.19024)
+light_color = Color(1, 0, 0, 1)
+light_energy = 0.1
+shadow_enabled = true
+omni_range = 1.0
+
+[node name="Label3D" type="Label3D" parent="." index="10"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 6.52445, 6.03901, 0.338307)
+shaded = true
+modulate = Color(0, 0, 0, 1)
+text = "NO CALLER ID"
+font = ExtResource("4_d4aai")
+font_size = 120
+outline_size = 0

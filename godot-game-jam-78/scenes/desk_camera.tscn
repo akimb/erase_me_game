@@ -1,0 +1,78 @@
+[gd_scene load_steps=7 format=3 uid="uid://1fsjaieb1emb"]
+
+[ext_resource type="Texture2D" uid="uid://8l4h2yd0m56u" path="res://ui/tiles/tile_0122.png" id="1_2qlyu"]
+[ext_resource type="Script" path="res://scripts/desk_camera.gd" id="1_i00jy"]
+[ext_resource type="Shader" path="res://assets/shaders/playshader.gdshader" id="3_r5pdp"]
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="4_rvetp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yx3m8"]
+shader = ExtResource("3_r5pdp")
+shader_parameter/wiggle = 0.04
+shader_parameter/wiggle_speed = 25.0
+shader_parameter/smear = 0.5
+shader_parameter/blur_samples = 5
+
+[sub_resource type="LabelSettings" id="LabelSettings_5yfoy"]
+font = ExtResource("4_rvetp")
+font_size = 25
+
+[node name="Desk Camera" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45339, 2.84772)
+script = ExtResource("1_i00jy")
+
+[node name="Pointer" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+target_position = Vector3(0, -10, 0)
+
+[node name="Desk UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Desk UI"]
+modulate = Color(1, 1, 1, 0.5)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -10.0
+offset_top = -10.0
+offset_right = 30.0
+offset_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_2qlyu")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Desk UI"]
+
+[node name="ColorRect" type="ColorRect" parent="Desk UI/CanvasLayer"]
+material = SubResource("ShaderMaterial_yx3m8")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="Desk UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -84.0
+offset_top = -119.0
+offset_right = 84.0
+offset_bottom = -96.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "Mouse wheel to zoom"
+label_settings = SubResource("LabelSettings_5yfoy")
+horizontal_alignment = 1
+vertical_alignment = 1

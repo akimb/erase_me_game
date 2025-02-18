@@ -1,0 +1,68 @@
+[gd_scene load_steps=13 format=3 uid="uid://do03phxh78x0u"]
+
+[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6qjif"]
+[ext_resource type="PackedScene" uid="uid://k4x24ga5rch7" path="res://assets/models/desk.glb" id="1_o1vky"]
+[ext_resource type="Texture2D" uid="uid://cib0l0awsapow" path="res://assets/models/hang in there cat.jpg" id="4_0dtf6"]
+[ext_resource type="PackedScene" uid="uid://ddemt1dxx38vp" path="res://scenes/monitor.tscn" id="4_8ihv2"]
+[ext_resource type="PackedScene" uid="uid://1fsjaieb1emb" path="res://scenes/desk_camera.tscn" id="4_pf53h"]
+[ext_resource type="PackedScene" uid="uid://ddv32s38nffkr" path="res://scenes/mouse.tscn" id="5_i60qe"]
+[ext_resource type="PackedScene" uid="uid://b5qon5tdcfpe" path="res://scenes/keyboard.tscn" id="6_xmrk6"]
+[ext_resource type="PackedScene" uid="uid://cyeafoym1je7k" path="res://scenes/pc.tscn" id="7_4xxfp"]
+[ext_resource type="PackedScene" uid="uid://3c0bv7nu2lbs" path="res://scenes/phone.tscn" id="9_nvogb"]
+[ext_resource type="PackedScene" uid="uid://p5r5yq3ejujd" path="res://scenes/sticky_note.tscn" id="10_7kvat"]
+
+[sub_resource type="Sky" id="Sky_lwn4g"]
+
+[sub_resource type="Environment" id="Environment_njxmg"]
+background_mode = 2
+sky = SubResource("Sky_lwn4g")
+
+[node name="Main" type="Node3D"]
+script = ExtResource("1_6qjif")
+
+[node name="Desk Camera" parent="." node_paths=PackedStringArray("monitor", "pc", "phone") instance=ExtResource("4_pf53h")]
+monitor = NodePath("../monitor")
+pc = NodePath("../pc")
+phone = NodePath("../phone")
+
+[node name="monitor" parent="." node_paths=PackedStringArray("desk_camera") instance=ExtResource("4_8ihv2")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.2, 0.205587, -0.215821)
+desk_camera = NodePath("../Desk Camera")
+
+[node name="desk" parent="." instance=ExtResource("1_o1vky")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_njxmg")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.146, 1.94121)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 42.3436
+spot_angle = 22.1341
+spot_angle_attenuation = 6.91804
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -2.53415, 1.39941, 1.31524)
+visible = false
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.99866, -0.0517433, 0, 0.0517433, 0.99866, 0, 0, 0, 1, -2.15383, 3.44598, -1.97804)
+shaded = true
+texture = ExtResource("4_0dtf6")
+
+[node name="mouse" parent="." instance=ExtResource("5_i60qe")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 1.17127, 0.220918, 1.22065)
+
+[node name="keyboard" parent="." instance=ExtResource("6_xmrk6")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.20474, 0.191593, -0.469754)
+
+[node name="pc" parent="." node_paths=PackedStringArray("desk_camera") instance=ExtResource("7_4xxfp")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.305706, 0, -0.131683)
+desk_camera = NodePath("../Desk Camera")
+
+[node name="phone" parent="." instance=ExtResource("9_nvogb")]
+transform = Transform3D(0.0384466, 0, 0.0319666, 0, 0.05, 0, -0.0319666, 0, 0.0384466, -2.12852, 0.205778, 0.917303)
+
+[node name="sticky_note" parent="." instance=ExtResource("10_7kvat")]
+transform = Transform3D(0.19924, -0.00131569, 0.0173648, 0.0173648, 0.0300768, -0.196962, -0.00131569, 0.197721, 0.0300768, -0.570201, 0.595691, 0.286928)

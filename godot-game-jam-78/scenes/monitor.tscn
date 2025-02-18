@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddemt1dxx38vp"]
+
+[ext_resource type="PackedScene" uid="uid://ceu6rljfrk6we" path="res://assets/models/monitor.glb" id="2_emi4d"]
+[ext_resource type="Script" path="res://scripts/monitor.gd" id="2_mgjs5"]
+[ext_resource type="PackedScene" uid="uid://dp8wv6cr46taw" path="res://scenes/computer_access.tscn" id="3_xm667"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fvjx8"]
+size = Vector3(68.137, 61.6124, 20.5737)
+
+[node name="monitor" node_paths=PackedStringArray("mesh") instance=ExtResource("2_emi4d")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.2, 0, 0)
+script = ExtResource("2_mgjs5")
+mesh = NodePath("Monitor_Material_003_0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.66465, 42.269, 8.50968)
+shape = SubResource("BoxShape3D_fvjx8")
+
+[node name="Computer Access" parent="." index="4" instance=ExtResource("3_xm667")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0714731)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.88563, 44.972, 40.8289)
+light_color = Color(0.744753, 1, 0.995536, 1)
+light_energy = 0.5
+shadow_enabled = true
+distance_fade_begin = 0.0
+omni_range = 1.56662

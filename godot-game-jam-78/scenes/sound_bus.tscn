@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://bgxec2merl3nd"]
+
+[ext_resource type="Script" path="res://scripts/sound_bus.gd" id="1_mhstk"]
+[ext_resource type="AudioStream" uid="uid://bjmm70duroctm" path="res://sounds/busy_signal.ogg" id="2_hoqul"]
+[ext_resource type="AudioStream" uid="uid://b42c3c5htxxy3" path="res://sounds/backrooms.mp3" id="3_m0fyt"]
+[ext_resource type="AudioStream" uid="uid://b1jwaq1ypfw4c" path="res://sounds/creepy_ambience.ogg" id="4_lvdim"]
+[ext_resource type="AudioStream" uid="uid://cv44ortlsaw2u" path="res://sounds/keyboard_press.ogg" id="5_hplc5"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5haf3"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 1
+stream_0/stream = ExtResource("5_hplc5")
+
+[node name="SoundBus" type="Node"]
+script = ExtResource("1_mhstk")
+
+[node name="Busy Signal" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_hoqul")
+volume_db = -5.0
+
+[node name="Backrooms" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_m0fyt")
+volume_db = -20.0
+
+[node name="Ambience" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_lvdim")
+volume_db = -15.0
+
+[node name="Key Press" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_5haf3")
+volume_db = -20.0
+max_polyphony = 2

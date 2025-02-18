@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://dp8wv6cr46taw"]
+
+[ext_resource type="Script" path="res://scripts/computer_access.gd" id="1_t87eq"]
+[ext_resource type="QuadMesh" uid="uid://dss48niyphoip" path="res://resources/blue_screen.tres" id="2_c6b32"]
+[ext_resource type="PackedScene" uid="uid://ylcvcfgqc422" path="res://scenes/computer_ui.tscn" id="3_bguj6"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_43knt"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbn3x"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_43knt")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kathb"]
+size = Vector3(53.8598, 40.1149, 3.17291)
+
+[node name="Computer Access" type="Node3D"]
+script = ExtResource("1_t87eq")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+gui_embed_subwindows = true
+size = Vector2i(600, 512)
+render_target_update_mode = 4
+
+[node name="Computer UI" parent="SubViewport" instance=ExtResource("3_bguj6")]
+mouse_filter = 1
+
+[node name="BlueScreen" type="MeshInstance3D" parent="."]
+transform = Transform3D(53.8191, 0, 0, 0, 40.1184, 0, 0, 0, 4.98315, -9.73196, 44.999, 18.4623)
+mesh = ExtResource("2_c6b32")
+surface_material_override/0 = SubResource("StandardMaterial3D_vbn3x")
+
+[node name="Camera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.73196, 44.999, 48.0036)
+fov = 90.0
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.73196, 44.999, 18.4623)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0268269, -0.0604858, -0.370575)
+shape = SubResource("BoxShape3D_kathb")
+
+[connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
+[connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]
