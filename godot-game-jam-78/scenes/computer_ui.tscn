@@ -165,7 +165,6 @@ theme_override_colors/font_color = Color(0.219608, 0.670588, 0.235294, 1)
 theme_override_constants/caret_width = 5
 theme_override_fonts/font = ExtResource("2_3scss")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_xqf6y")
-text = "put text here"
 placeholder_text = "put text here"
 context_menu_enabled = false
 flat = true

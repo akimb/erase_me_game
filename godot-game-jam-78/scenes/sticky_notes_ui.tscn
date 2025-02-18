@@ -38,7 +38,7 @@ offset_bottom = 506.0
 grow_horizontal = 2
 text = "right click to exit computer screen
 mouse wheel to zoom
-E to interact
+left click to interact
 mouse to look around
 Esc to pause"
 label_settings = SubResource("LabelSettings_waleh")
