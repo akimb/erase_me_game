@@ -1,0 +1,99 @@
+[gd_scene load_steps=9 format=3 uid="uid://d0tkhwa1s4hfm"]
+
+[ext_resource type="Script" path="res://scripts/flappy_bird.gd" id="1_5ffxr"]
+[ext_resource type="PackedScene" uid="uid://curl3mkeiojqa" path="res://scenes/flappy_frog.tscn" id="2_ij3mg"]
+[ext_resource type="Texture2D" uid="uid://ru6gd8ro27ln" path="res://ui/exit_button.png" id="4_7iuy8"]
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="5_oxy8r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idkbv"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.605274, 0.605274, 0.605274, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qxfn5"]
+bg_color = Color(0.627451, 0.819608, 0.94902, 1)
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wec5n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_pnait"]
+font = ExtResource("5_oxy8r")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control"]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -125.0
+offset_right = 150.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ffxr")
+
+[node name="Panel" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -125.0
+offset_right = 150.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Panel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_idkbv")
+
+[node name="Flappy Frog" parent="Panel/Panel" instance=ExtResource("2_ij3mg")]
+layout_mode = 1
+
+[node name="Toolbar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_qxfn5")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 271.0
+offset_right = 299.0
+offset_bottom = 28.0
+theme_override_colors/icon_pressed_color = Color(0.564962, 0.564962, 0.564962, 1)
+theme_override_colors/icon_hover_color = Color(0.666569, 0.666569, 0.666569, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_wec5n")
+icon = ExtResource("4_7iuy8")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = 180.0
+offset_bottom = 26.0
+text = "flappy_frog.exe"
+label_settings = SubResource("LabelSettings_pnait")
+
+[connection signal="mouse_entered" from="Toolbar" to="." method="_on_toolbar_mouse_entered"]
+[connection signal="mouse_exited" from="Toolbar" to="." method="_on_toolbar_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

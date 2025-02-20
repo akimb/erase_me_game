@@ -36,9 +36,11 @@ func get_object(object) -> StaticBody3D:
 		interacted = !interacted
 		selected_object.interact()
 	return selected_object
-	#selected_object = object
-	#interacted = !interacted
-	#return selected_object
+
+func reset_object():
+	if selected:
+		selected_object = null
+		interacted = false
 
 func interact():
 	print("Interacted with object")

@@ -19,7 +19,7 @@ shape = SubResource("BoxShape3D_fvjx8")
 [node name="Computer Access" parent="." index="4" instance=ExtResource("3_xm667")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0714731)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="." index="5"]
+[node name="Computer Light" type="OmniLight3D" parent="." index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.88563, 44.972, 40.8289)
 light_color = Color(0.744753, 1, 0.995536, 1)
 light_energy = 0.5

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://1fsjaieb1emb"]
+[gd_scene load_steps=8 format=3 uid="uid://1fsjaieb1emb"]
 
 [ext_resource type="Texture2D" uid="uid://8l4h2yd0m56u" path="res://ui/tiles/tile_0122.png" id="1_2qlyu"]
 [ext_resource type="Script" path="res://scripts/desk_camera.gd" id="1_i00jy"]
@@ -13,6 +13,10 @@ shader_parameter/smear = 0.5
 shader_parameter/blur_samples = 5
 
 [sub_resource type="LabelSettings" id="LabelSettings_5yfoy"]
+font = ExtResource("4_rvetp")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_8d11m"]
 font = ExtResource("4_rvetp")
 font_size = 25
 
@@ -76,3 +80,20 @@ text = "Mouse wheel to zoom"
 label_settings = SubResource("LabelSettings_5yfoy")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Time" type="Label" parent="CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -121.0
+offset_top = 21.0
+offset_right = -25.0
+offset_bottom = 66.0
+grow_horizontal = 0
+text = "12 AM"
+label_settings = SubResource("LabelSettings_8d11m")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

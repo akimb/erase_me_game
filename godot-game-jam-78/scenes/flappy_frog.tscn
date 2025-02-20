@@ -1,0 +1,142 @@
+[gd_scene load_steps=19 format=3 uid="uid://curl3mkeiojqa"]
+
+[ext_resource type="Script" path="res://scripts/flappy_bird_character.gd" id="1_mi33r"]
+[ext_resource type="Texture2D" uid="uid://cwg7ofyypifkp" path="res://assets/models/Idle (32x32).png" id="2_dx4q7"]
+[ext_resource type="PackedScene" uid="uid://jijkn760degu" path="res://scenes/pipe.tscn" id="3_osogu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg2m1"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0oidi"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5wcy"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dowu2"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_25evi"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk6wb"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_48kiv"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgdr5"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8sbvy"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2a115"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tba8"]
+atlas = ExtResource("2_dx4q7")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6yuh0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sg2m1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0oidi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5wcy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dowu2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_25evi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk6wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_48kiv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgdr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8sbvy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2a115")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tba8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 20.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p04ks"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_86vcr"]
+radius = 14.0357
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6wut4"]
+size = Vector2(296, 20)
+
+[node name="Flappy Frog" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(300, 250)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 250.0
+
+[node name="Character" type="CharacterBody2D" parent="."]
+position = Vector2(150, 128)
+script = ExtResource("1_mi33r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character"]
+position = Vector2(0, -2)
+sprite_frames = SubResource("SpriteFrames_6yuh0")
+frame_progress = 0.188581
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character"]
+shape = SubResource("CircleShape2D_p04ks")
+
+[node name="Area2D" type="Area2D" parent="Character"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/Area2D"]
+shape = SubResource("CircleShape2D_86vcr")
+
+[node name="Ground" type="StaticBody2D" parent="." groups=["ground"]]
+position = Vector2(12, 237)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+position = Vector2(138, 0)
+shape = SubResource("RectangleShape2D_6wut4")
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(10, 41)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+position = Vector2(138, 0)
+shape = SubResource("RectangleShape2D_6wut4")
+
+[node name="Pipe" parent="." instance=ExtResource("3_osogu")]
+position = Vector2(151, 132)
+
+[connection signal="body_entered" from="Character/Area2D" to="Character" method="_on_area_2d_body_entered"]

@@ -48,11 +48,22 @@ light_energy = 0.1
 shadow_enabled = true
 omni_range = 1.0
 
-[node name="Label3D" type="Label3D" parent="." index="10"]
+[node name="CallerID" type="Label3D" parent="." index="10"]
 transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 6.52445, 6.03901, 0.338307)
+visible = false
 shaded = true
 modulate = Color(0, 0, 0, 1)
 text = "NO CALLER ID"
+font = ExtResource("4_d4aai")
+font_size = 120
+outline_size = 0
+
+[node name="Incoming Call" type="Label3D" parent="." index="11"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 6.52445, 6.03901, 0.338307)
+visible = false
+shaded = true
+modulate = Color(0, 0, 0, 1)
+text = "INCOMING CALL"
 font = ExtResource("4_d4aai")
 font_size = 120
 outline_size = 0

@@ -1,5 +1,8 @@
 extends Node3D
 
+@export var monitor : Monitor = null
+@export var pc : PC = null
+@export var desk_camera : DeskCamera = null
 
 func _ready():
 	SoundBus.backrooms.play()

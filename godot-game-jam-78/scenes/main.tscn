@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://do03phxh78x0u"]
+[gd_scene load_steps=14 format=3 uid="uid://do03phxh78x0u"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6qjif"]
 [ext_resource type="PackedScene" uid="uid://k4x24ga5rch7" path="res://assets/models/desk.glb" id="1_o1vky"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cyeafoym1je7k" path="res://scenes/pc.tscn" id="7_4xxfp"]
 [ext_resource type="PackedScene" uid="uid://3c0bv7nu2lbs" path="res://scenes/phone.tscn" id="9_nvogb"]
 [ext_resource type="PackedScene" uid="uid://p5r5yq3ejujd" path="res://scenes/sticky_note.tscn" id="10_7kvat"]
+[ext_resource type="PackedScene" uid="uid://puq7kx1i6joj" path="res://assets/models/doorway.glb" id="11_6v1au"]
 
 [sub_resource type="Sky" id="Sky_lwn4g"]
 
@@ -17,8 +18,11 @@
 background_mode = 2
 sky = SubResource("Sky_lwn4g")
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("monitor", "pc", "desk_camera")]
 script = ExtResource("1_6qjif")
+monitor = NodePath("monitor")
+pc = NodePath("pc")
+desk_camera = NodePath("Desk Camera")
 
 [node name="Desk Camera" parent="." node_paths=PackedStringArray("monitor", "pc", "phone") instance=ExtResource("4_pf53h")]
 monitor = NodePath("../monitor")
@@ -57,8 +61,9 @@ transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 1.17127, 0.220918, 1.22065
 [node name="keyboard" parent="." instance=ExtResource("6_xmrk6")]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.20474, 0.191593, -0.469754)
 
-[node name="pc" parent="." node_paths=PackedStringArray("desk_camera") instance=ExtResource("7_4xxfp")]
+[node name="pc" parent="." node_paths=PackedStringArray("monitor", "desk_camera") instance=ExtResource("7_4xxfp")]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.305706, 0, -0.131683)
+monitor = NodePath("../monitor")
 desk_camera = NodePath("../Desk Camera")
 
 [node name="phone" parent="." instance=ExtResource("9_nvogb")]
@@ -66,3 +71,12 @@ transform = Transform3D(0.0384466, 0, 0.0319666, 0, 0.05, 0, -0.0319666, 0, 0.03
 
 [node name="sticky_note" parent="." instance=ExtResource("10_7kvat")]
 transform = Transform3D(0.19924, -0.00131569, 0.0173648, 0.0173648, 0.0300768, -0.196962, -0.00131569, 0.197721, 0.0300768, -0.570201, 0.595691, 0.286928)
+
+[node name="doorway" parent="." instance=ExtResource("11_6v1au")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.1536)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="doorway"]
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 8.72174, -9.35126)
+light_color = Color(1, 0, 0, 1)
+spot_range = 30.1901
+spot_angle = 51.1142

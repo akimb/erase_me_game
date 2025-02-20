@@ -1,5 +1,7 @@
 extends Node3D
 
+@export var computer_ui : ComputerUI = null
+
 @onready var diegetic_camera = $Camera
 @onready var node_area = $Area3D
 @onready var node_viewport = $SubViewport
@@ -13,6 +15,7 @@ var desk_camera : DeskCamera = null
 
 func _ready():
 	node_area.input_event.connect(_mouse_input_event)
+	computer_ui.set_process_input(true)
 
 func _on_area_3d_mouse_entered():
 	if diegetic_camera.current:
@@ -27,22 +30,18 @@ func _on_area_3d_mouse_exited():
 func set_desk_camera(camera : DeskCamera):
 	desk_camera = camera
 
-func _unhandled_input(event):
-
+func _input(event):
 	if event.is_action_pressed("go_to_first_person"):
 		if desk_camera:
-			
 			desk_camera.process_mode = PROCESS_MODE_INHERIT
 			diegetic_camera.current = false
 			desk_camera.desk_ui.visible = true
 			desk_camera.canvas_layer.visible = true
 			desk_camera.current = true
-			#get_tree().paused = true
+			computer_ui.line_edit.release_focus()
+			computer_ui.set_process_input(false)
 			Input.warp_mouse(DisplayServer.window_get_size() / 2)
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-			#Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-			await get_tree().process_frame
-			#get_tree().paused = false
 	
 	for mouse_event in [InputEventMouseButton, InputEventMouseMotion, InputEventScreenDrag, InputEventScreenTouch]:
 		if is_instance_of(event, mouse_event):

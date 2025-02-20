@@ -24,7 +24,7 @@ var maxLookAngleY : float = 60.0
 var minFov : int = 30
 var maxFov : int = 75
 
-var isZoomed : bool = false
+var is_looking_back : bool = false
 var collider : StaticBody3D = null
 
 func _ready():
@@ -39,11 +39,11 @@ func _process(_delta):
 		look_at.emit(null)
 
 func _input(event):
-	if Input.is_action_pressed("interact") and pointer.is_colliding():
+	if Input.is_action_just_pressed("interact") and pointer.is_colliding():
 		collider = pointer.get_collider()
 		interact.emit(collider)
 	
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and not is_looking_back:
 		mouseDelta = event.relative
 		
 		self.rotation_degrees.x -= mouseDelta.y * mouse_sensitivity
@@ -53,11 +53,6 @@ func _input(event):
 		self.rotation_degrees.y = clamp(self.rotation_degrees.y, minLookAngleY, maxLookAngleY)
 		
 		mouseDelta = Vector2()
-		
-		#if isZoomed:
-			#var zoom := get_tree().create_tween()
-			#zoom.tween_property(self, "fov", maxFov, 0.2)
-			#isZoomed = false
 	
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
@@ -66,11 +61,23 @@ func _input(event):
 			if self.fov > minFov:
 				var zoom := get_tree().create_tween()
 				zoom.tween_property(self, "fov", max(self.fov - 30, minFov), 0.2)
-				#isZoomed = true
 		
 		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
 			if self.fov < maxFov:
 				var zoom := get_tree().create_tween()
 				zoom.tween_property(self, "fov", min(self.fov + 30, maxFov), 0.2)
+	
+	if event.is_action_pressed("look left"):
+		is_looking_back = true
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "rotation_degrees", Vector3(0, 140, 0), 0.2)
+	elif event.is_action_pressed("look right"):
+		is_looking_back = true
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "rotation_degrees", Vector3(0, -140, 0), 0.2)
+	elif event.is_action_released("look left") or event.is_action_released("look right"):
+		is_looking_back = false
+		var tween = get_tree().create_tween()
+		tween.tween_property(self, "rotation_degrees", Vector3(0, 0, 0), 0.2)
 	
 	self.fov = clamp(self.fov, minFov, maxFov)

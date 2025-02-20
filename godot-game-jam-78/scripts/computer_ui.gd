@@ -1,15 +1,16 @@
 extends Control
 
+class_name ComputerUI
 
-# Called when the node enters the scene tree for the first time.
+@onready var line_edit = $"Bootup Sequence/LineEdit"
+
+var mouse_cursor : CompressedTexture2D = preload("res://ui/mouse_icon.png")
+
 func _ready():
-	pass # Replace with function body.
+	Input.set_custom_mouse_cursor(mouse_cursor)
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
-
-func _on_line_edit_text_changed(new_text):
+func _on_line_edit_text_changed(_new_text):
 	SoundBus.key_press.play()

@@ -14,16 +14,9 @@ albedo_texture = SubResource("ViewportTexture_43knt")
 [sub_resource type="BoxShape3D" id="BoxShape3D_kathb"]
 size = Vector3(53.8598, 40.1149, 3.17291)
 
-[node name="Computer Access" type="Node3D"]
+[node name="Computer Access" type="Node3D" node_paths=PackedStringArray("computer_ui")]
 script = ExtResource("1_t87eq")
-
-[node name="SubViewport" type="SubViewport" parent="."]
-gui_embed_subwindows = true
-size = Vector2i(600, 512)
-render_target_update_mode = 4
-
-[node name="Computer UI" parent="SubViewport" instance=ExtResource("3_bguj6")]
-mouse_filter = 1
+computer_ui = NodePath("SubViewport/Computer UI")
 
 [node name="BlueScreen" type="MeshInstance3D" parent="."]
 transform = Transform3D(53.8191, 0, 0, 0, 40.1184, 0, 0, 0, 4.98315, -9.73196, 44.999, 18.4623)
@@ -40,6 +33,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.73196, 44.999, 18.4623)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0268269, -0.0604858, -0.370575)
 shape = SubResource("BoxShape3D_kathb")
+
+[node name="SubViewport" type="SubViewport" parent="."]
+physics_object_picking = true
+gui_embed_subwindows = true
+size = Vector2i(600, 512)
+render_target_update_mode = 4
+
+[node name="Computer UI" parent="SubViewport" instance=ExtResource("3_bguj6")]
 
 [connection signal="mouse_entered" from="Area3D" to="." method="_on_area_3d_mouse_entered"]
 [connection signal="mouse_exited" from="Area3D" to="." method="_on_area_3d_mouse_exited"]

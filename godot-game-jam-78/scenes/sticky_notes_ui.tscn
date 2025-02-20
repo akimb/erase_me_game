@@ -1,13 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://cuu81db35lgvl"]
+[gd_scene load_steps=2 format=3 uid="uid://cuu81db35lgvl"]
 
 [ext_resource type="FontFile" uid="uid://irepqcavpat6" path="res://assets/Whitenice.otf" id="1_yp24m"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_waleh"]
-font = ExtResource("1_yp24m")
-font_size = 60
-font_color = Color(0, 0, 0, 1)
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -26,7 +19,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.999999, 0.932812, 0.656175, 1)
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="RichTextLabel" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -36,10 +29,16 @@ offset_top = 29.0
 offset_right = 242.0
 offset_bottom = 506.0
 grow_horizontal = 2
-text = "right click to exit computer screen
-mouse wheel to zoom
-left click to interact
-mouse to look around
-Esc to pause"
-label_settings = SubResource("LabelSettings_waleh")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/normal_font = ExtResource("1_yp24m")
+theme_override_font_sizes/normal_font_size = 50
+bbcode_enabled = true
+text = "[color=red]right click[/color] to exit computer screen
+[color=red]mouse wheel[/color] to zoom
+[color=red]left click[/color] to interact
+[color=red]mouse[/color] to look around
+[color=red]Esc[/color] to pause
+[color=red]Q or E[/color] to look back"
 autowrap_mode = 2

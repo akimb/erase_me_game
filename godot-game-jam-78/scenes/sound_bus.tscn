@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=3 uid="uid://bgxec2merl3nd"]
+[gd_scene load_steps=12 format=3 uid="uid://bgxec2merl3nd"]
 
 [ext_resource type="Script" path="res://scripts/sound_bus.gd" id="1_mhstk"]
 [ext_resource type="AudioStream" uid="uid://bjmm70duroctm" path="res://sounds/busy_signal.ogg" id="2_hoqul"]
 [ext_resource type="AudioStream" uid="uid://b42c3c5htxxy3" path="res://sounds/backrooms.mp3" id="3_m0fyt"]
 [ext_resource type="AudioStream" uid="uid://b1jwaq1ypfw4c" path="res://sounds/creepy_ambience.ogg" id="4_lvdim"]
 [ext_resource type="AudioStream" uid="uid://cv44ortlsaw2u" path="res://sounds/keyboard_press.ogg" id="5_hplc5"]
+[ext_resource type="AudioStream" uid="uid://brmn8vfxxhsdj" path="res://sounds/flappy_frog.ogg" id="6_04vhf"]
+[ext_resource type="AudioStream" uid="uid://7yfcvnjdqo6r" path="res://sounds/phone_ring.ogg" id="6_eq5fr"]
+[ext_resource type="AudioStream" uid="uid://em2qt454bvau" path="res://sounds/phone_call_1.ogg" id="7_qsbvs"]
+[ext_resource type="AudioStream" uid="uid://nd7b8w5dvpqx" path="res://sounds/put_down_phone.ogg" id="8_i0gme"]
+[ext_resource type="AudioStream" uid="uid://cf4uyu6qb2alu" path="res://sounds/pick_up_phone.ogg" id="9_n8h5q"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5haf3"]
 playback_mode = 1
@@ -31,3 +36,26 @@ volume_db = -15.0
 stream = SubResource("AudioStreamRandomizer_5haf3")
 volume_db = -20.0
 max_polyphony = 2
+
+[node name="Flappy Bird Wing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_04vhf")
+volume_db = -5.0
+max_polyphony = 20
+
+[node name="Phone Ring" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_eq5fr")
+volume_db = -5.0
+
+[node name="Phone Call 1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_qsbvs")
+volume_db = -5.0
+
+[node name="Put Down Phone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_i0gme")
+volume_db = -5.0
+
+[node name="Pick Up Phone" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_n8h5q")
+volume_db = -5.0
+
+[connection signal="finished" from="Phone Call 1" to="." method="_on_phone_call_1_finished"]
