@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bgxec2merl3nd"]
+[gd_scene load_steps=13 format=3 uid="uid://bgxec2merl3nd"]
 
 [ext_resource type="Script" path="res://scripts/sound_bus.gd" id="1_mhstk"]
 [ext_resource type="AudioStream" uid="uid://bjmm70duroctm" path="res://sounds/busy_signal.ogg" id="2_hoqul"]
@@ -10,6 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://em2qt454bvau" path="res://sounds/phone_call_1.ogg" id="7_qsbvs"]
 [ext_resource type="AudioStream" uid="uid://nd7b8w5dvpqx" path="res://sounds/put_down_phone.ogg" id="8_i0gme"]
 [ext_resource type="AudioStream" uid="uid://cf4uyu6qb2alu" path="res://sounds/pick_up_phone.ogg" id="9_n8h5q"]
+[ext_resource type="AudioStream" uid="uid://nejsaulataag" path="res://sounds/test_phone_call.ogg" id="11_etbnx"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5haf3"]
 playback_mode = 1
@@ -57,5 +58,8 @@ volume_db = -5.0
 [node name="Pick Up Phone" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_n8h5q")
 volume_db = -5.0
+
+[node name="Test Phone Call" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_etbnx")
 
 [connection signal="finished" from="Phone Call 1" to="." method="_on_phone_call_1_finished"]

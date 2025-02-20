@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://d0tkhwa1s4hfm"]
 
-[ext_resource type="Script" path="res://scripts/flappy_bird.gd" id="1_5ffxr"]
+[ext_resource type="Script" path="res://scripts/flappy_frog_manager.gd" id="1_5ffxr"]
 [ext_resource type="PackedScene" uid="uid://curl3mkeiojqa" path="res://scenes/flappy_frog.tscn" id="2_ij3mg"]
 [ext_resource type="Texture2D" uid="uid://ru6gd8ro27ln" path="res://ui/exit_button.png" id="4_7iuy8"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="5_oxy8r"]

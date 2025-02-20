@@ -1,12 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://ylcvcfgqc422"]
+[gd_scene load_steps=10 format=3 uid="uid://ylcvcfgqc422"]
 
 [ext_resource type="Script" path="res://scripts/computer_ui.gd" id="1_d5htc"]
 [ext_resource type="Theme" uid="uid://c85is4ndjcbp0" path="res://resources/default_theme.tres" id="1_r8al6"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_3scss"]
 [ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="2_5titc"]
 [ext_resource type="PackedScene" uid="uid://d0tkhwa1s4hfm" path="res://scenes/flappy_frog_window.tscn" id="5_20cgr"]
+[ext_resource type="Shader" path="res://assets/shaders/computer_warp.gdshader" id="6_gmiev"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqf6y"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1a68q"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6c4wx"]
+shader = ExtResource("6_gmiev")
+shader_parameter/resolution = Vector2(800, 640)
+shader_parameter/scan_line_amount = 1.0
+shader_parameter/warp_amount = 0.05
+shader_parameter/noise_amount = 0.2
+shader_parameter/interference_amount = 1.0
+shader_parameter/grille_amount = 0.1
+shader_parameter/grille_size = 1.0
+shader_parameter/vignette_amount = 0.6
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/aberation_amount = 1.0
+shader_parameter/roll_line_amount = 0.2
+shader_parameter/roll_speed = 1.0
+shader_parameter/scan_line_strength = -8.0
+shader_parameter/pixel_strength = -2.0
 
 [node name="Computer UI" type="Control"]
 custom_minimum_size = Vector2(600, 512)
@@ -197,6 +217,7 @@ flat = true
 caret_blink = true
 
 [node name="User UI" type="ColorRect" parent="."]
+visible = false
 custom_minimum_size = Vector2(600, 512)
 layout_mode = 1
 anchors_preset = 8
@@ -221,6 +242,137 @@ offset_right = 215.0
 offset_bottom = 87.0
 
 [node name="Shader Overlay" parent="User UI" instance=ExtResource("2_5titc")]
+layout_mode = 0
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 600.0
+offset_bottom = 512.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Title Screen" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="LineEdit" parent="Title Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -227.5
+offset_top = -37.0
+offset_right = 227.5
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_colors/caret_color = Color(1, 0, 0, 1)
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_constants/caret_width = 15
+theme_override_fonts/font = ExtResource("2_3scss")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/read_only = SubResource("StyleBoxEmpty_1a68q")
+text = "ERASE ME."
+alignment = 1
+max_length = 20
+context_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+drag_and_drop_selection_enabled = false
+flat = true
+caret_blink = true
+caret_column = 9
+caret_force_displayed = true
+
+[node name="Button" type="Button" parent="Title Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = 50.0
+offset_right = 34.0
+offset_bottom = 80.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3scss")
+theme_override_font_sizes/font_size = 25
+text = "PLAY"
+flat = true
+
+[node name="Button2" type="Button" parent="Title Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -33.0
+offset_top = 86.0
+offset_right = 34.0
+offset_bottom = 116.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3scss")
+theme_override_font_sizes/font_size = 25
+text = "CONTROLS"
+flat = true
+
+[node name="Button3" type="Button" parent="Title Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = 126.0
+offset_right = 56.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3scss")
+theme_override_font_sizes/font_size = 25
+text = "CREDITS"
+flat = true
+
+[node name="Button4" type="Button" parent="Title Screen"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = 166.0
+offset_right = 56.0
+offset_bottom = 196.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_3scss")
+theme_override_font_sizes/font_size = 25
+text = "QUIT"
+flat = true
+
+[node name="Shader Overlay" parent="Title Screen" instance=ExtResource("2_5titc")]
+material = SubResource("ShaderMaterial_6c4wx")
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0

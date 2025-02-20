@@ -80,3 +80,6 @@ transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107
 light_color = Color(1, 0, 0, 1)
 spot_range = 30.1901
 spot_angle = 51.1142
+
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.42507, 30.2515)

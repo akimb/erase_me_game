@@ -18,3 +18,6 @@ func _physics_process(delta):
 func _on_area_2d_body_entered(body):
 	if body is StaticBody2D:
 		print("HIT")
+
+func _on_death_wall_body_entered(body):
+	print("GGGG")
