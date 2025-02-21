@@ -12,6 +12,7 @@ signal call_ended
 @onready var pick_up_phone = $"Pick Up Phone"
 @onready var flappy_bird_wing = $"Flappy Bird Wing"
 @onready var test_phone_call = $"Test Phone Call"
+@onready var mouse_click = $"Mouse Click"
 
 
 

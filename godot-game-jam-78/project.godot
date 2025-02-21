@@ -24,6 +24,10 @@ SoundBus="*res://scenes/sound_bus.tscn"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[global_group]
+
+ground=""
+
 [input]
 
 pause={

@@ -70,7 +70,7 @@ desk_camera = NodePath("../Desk Camera")
 transform = Transform3D(0.0384466, 0, 0.0319666, 0, 0.05, 0, -0.0319666, 0, 0.0384466, -2.12852, 0.205778, 0.917303)
 
 [node name="sticky_note" parent="." instance=ExtResource("10_7kvat")]
-transform = Transform3D(0.19924, -0.00131569, 0.0173648, 0.0173648, 0.0300768, -0.196962, -0.00131569, 0.197721, 0.0300768, -0.570201, 0.595691, 0.286928)
+transform = Transform3D(0.19924, -0.00131569, 0.0173648, 0.0173648, 0.0300768, -0.196962, -0.00131569, 0.197721, 0.0300768, -0.570201, 0.616663, 0.286928)
 
 [node name="doorway" parent="." instance=ExtResource("11_6v1au")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.1536)

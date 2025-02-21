@@ -1,10 +1,19 @@
 extends Control
 
+
+@export var flappy_frog : FlappyFrog = null
+@onready var pause_screen = $"Pause Screen"
+@onready var play_button = $"Play Button"
+
 var dragging_distance
 var dir
 var dragging
 var offset = Vector2.ZERO
 var mouse_in : bool = false
+
+func _ready():
+	pause_screen.visible = true
+	play_button.visible = true
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -36,3 +45,8 @@ func _on_toolbar_mouse_exited():
 func _on_button_pressed():
 	get_parent().remove_child(self)
 	self.queue_free()
+
+func _on_play_button_pressed():
+	pause_screen.visible = false
+	play_button.visible = false
+	flappy_frog.process_mode = Node.PROCESS_MODE_INHERIT

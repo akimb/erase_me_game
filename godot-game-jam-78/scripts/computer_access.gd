@@ -6,10 +6,14 @@ extends Node3D
 @onready var node_area = $Area3D
 @onready var node_viewport = $SubViewport
 @onready var node_quad = $BlueScreen
+@onready var camera = $Camera
 
 var is_mouse_inside : bool = false
 var last_event_pos2D = null
 var last_event_time: float = -1.0
+
+var minFov : int = 60
+var maxFov : int = 90
 
 var desk_camera : DeskCamera = null
 
@@ -27,8 +31,11 @@ func _on_area_3d_mouse_exited():
 		Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
 		is_mouse_inside = false
 
-func set_desk_camera(camera : DeskCamera):
-	desk_camera = camera
+func set_desk_camera(curr_camera : DeskCamera):
+	desk_camera = curr_camera
+
+func _reset_camera():
+	camera.fov = maxFov
 
 func _input(event):
 	if event.is_action_pressed("go_to_first_person"):
@@ -42,6 +49,16 @@ func _input(event):
 			computer_ui.set_process_input(false)
 			Input.warp_mouse(DisplayServer.window_get_size() / 2)
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if event is InputEventMouseButton:
+		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
+			if camera.fov > minFov:
+				var zoom := get_tree().create_tween()
+				zoom.tween_property(camera, "fov", max(camera.fov - 30, minFov), 0.2)
+		
+		if event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
+			if camera.fov < maxFov:
+				var zoom := get_tree().create_tween()
+				zoom.tween_property(camera, "fov", min(camera.fov + 30, maxFov), 0.2)
 	
 	for mouse_event in [InputEventMouseButton, InputEventMouseMotion, InputEventScreenDrag, InputEventScreenTouch]:
 		if is_instance_of(event, mouse_event):

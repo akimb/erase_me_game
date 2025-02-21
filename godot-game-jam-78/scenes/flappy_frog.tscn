@@ -1,8 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://curl3mkeiojqa"]
+[gd_scene load_steps=23 format=3 uid="uid://curl3mkeiojqa"]
 
 [ext_resource type="Script" path="res://scripts/flappy_frog_character.gd" id="1_mi33r"]
 [ext_resource type="Script" path="res://scripts/flappy_frog_game_manager.gd" id="1_siyu7"]
 [ext_resource type="Texture2D" uid="uid://cwg7ofyypifkp" path="res://assets/models/Idle (32x32).png" id="2_dx4q7"]
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="4_2syv1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sg2m1"]
 atlas = ExtResource("2_dx4q7")
@@ -92,13 +93,20 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_p04ks"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86vcr"]
-radius = 14.0357
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wut4"]
 size = Vector2(296, 20)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4anw"]
-size = Vector2(8, 176)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iovj4"]
+bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ggoy"]
+bg_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_vdqyr"]
+font = ExtResource("4_2syv1")
+font_size = 25
+font_color = Color(0, 1, 0, 1)
 
 [node name="Flappy Frog" type="Control"]
 clip_contents = true
@@ -108,11 +116,13 @@ offset_right = 300.0
 offset_bottom = 246.0
 script = ExtResource("1_siyu7")
 
-[node name="Character" type="CharacterBody2D" parent="."]
+[node name="Character" type="CharacterBody2D" parent="." node_paths=PackedStringArray("flappy_manager")]
 position = Vector2(150, 128)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_mi33r")
+progress_value = 0.5
+flappy_manager = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character"]
 position = Vector2(0, -2)
@@ -128,7 +138,7 @@ shape = SubResource("CircleShape2D_p04ks")
 shape = SubResource("CircleShape2D_86vcr")
 
 [node name="Ground" type="StaticBody2D" parent="." groups=["ground"]]
-position = Vector2(12, 237)
+position = Vector2(12, 256)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" groups=["ground"]]
 position = Vector2(136, 0)
@@ -141,28 +151,55 @@ position = Vector2(10, 41)
 position = Vector2(138, 0)
 shape = SubResource("RectangleShape2D_6wut4")
 
-[node name="Death Wall" type="Area2D" parent="." groups=["death wall"]]
-position = Vector2(150, 128)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Death Wall" groups=["death wall"]]
-position = Vector2(-146, 11)
-shape = SubResource("RectangleShape2D_v4anw")
-debug_color = Color(0.989625, 0, 0.288226, 0.42)
-
 [node name="Spawn Timer" type="Timer" parent="."]
+wait_time = 1.5
 autostart = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-layout_mode = 0
-offset_left = 114.0
-offset_top = 79.0
-offset_right = 304.0
-offset_bottom = 106.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -95.0
+offset_top = 28.0
+offset_right = 95.0
+offset_bottom = 55.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_2syv1")
+theme_override_styles/background = SubResource("StyleBoxFlat_iovj4")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2ggoy")
 max_value = 1.0
-step = 0.1
+step = 0.05
 
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ERASE SUCCESSFUL"
+label_settings = SubResource("LabelSettings_vdqyr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="area_entered" from="Character/Area2D" to="Character" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Character/Area2D" to="Character" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Death Wall" to="Character" method="_on_death_wall_body_entered"]
 [connection signal="timeout" from="Spawn Timer" to="." method="_on_spawn_timer_timeout"]

@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://c6x2vfdj2t0lu"]
+
+[ext_resource type="PackedScene" uid="uid://boqf1kc4kqc05" path="res://scenes/title_monitor.tscn" id="1_djehd"]
+[ext_resource type="PackedScene" uid="uid://k4x24ga5rch7" path="res://assets/models/desk.glb" id="2_8r16y"]
+
+[sub_resource type="Environment" id="Environment_2llty"]
+background_mode = 2
+
+[node name="Title Screen" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.965307, 0.0439076, -0.257401, -0.0173568, 0.99437, 0.104528, 0.260542, -0.0964343, 0.960634, -0.784819, 1.48625, 2.26777)
+fov = 60.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_2llty")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.125338, 1.15183, 1.05739)
+light_energy = 0.5
+
+[node name="monitor" parent="." instance=ExtResource("1_djehd")]
+
+[node name="desk" parent="." instance=ExtResource("2_8r16y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11207, -0.198835, 0.451227)

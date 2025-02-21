@@ -14,3 +14,7 @@ func _process(_delta):
 
 func _on_line_edit_text_changed(_new_text):
 	SoundBus.key_press.play()
+
+func _input(event):
+	if event.is_action_pressed("interact"):
+		SoundBus.mouse_click.play()

@@ -1,0 +1,61 @@
+[gd_scene load_steps=9 format=3 uid="uid://boqf1kc4kqc05"]
+
+[ext_resource type="PackedScene" uid="uid://ceu6rljfrk6we" path="res://assets/models/monitor.glb" id="1_0up6l"]
+[ext_resource type="Script" path="res://scripts/title_monitor.gd" id="2_s3kuc"]
+[ext_resource type="PackedScene" uid="uid://ceucp0hqjw15s" path="res://scenes/title_screen_menu.tscn" id="2_xwqor"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n4047"]
+size = Vector3(66.99, 55.0187, 18.5491)
+
+[sub_resource type="QuadMesh" id="QuadMesh_t5a57"]
+size = Vector2(55, 42)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hxuk6"]
+viewport_path = NodePath("Node3D/SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yiqms"]
+resource_local_to_scene = true
+albedo_texture = SubResource("ViewportTexture_hxuk6")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kx03i"]
+size = Vector3(111.233, 92.8909, 11.9696)
+
+[node name="monitor" instance=ExtResource("1_0up6l")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0, 0, 0)
+script = ExtResource("2_s3kuc")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.56897, 44.6734, 8.77454)
+shape = SubResource("BoxShape3D_n4047")
+
+[node name="Node3D" type="Node3D" parent="." index="4"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.55805, 44.6651, 18.2983)
+mesh = SubResource("QuadMesh_t5a57")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_yiqms")
+
+[node name="SubViewport" type="SubViewport" parent="Node3D" index="1"]
+transparent_bg = true
+physics_object_picking = true
+gui_embed_subwindows = true
+size = Vector2i(600, 512)
+render_target_update_mode = 4
+
+[node name="Title Screen" parent="Node3D/SubViewport" index="0" instance=ExtResource("2_xwqor")]
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="Area3D" type="Area3D" parent="Node3D" index="2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/Area3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.0573, 40.2259, 16.3035)
+shape = SubResource("BoxShape3D_kx03i")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://d0tkhwa1s4hfm"]
+[gd_scene load_steps=11 format=3 uid="uid://d0tkhwa1s4hfm"]
 
 [ext_resource type="Script" path="res://scripts/flappy_frog_manager.gd" id="1_5ffxr"]
 [ext_resource type="PackedScene" uid="uid://curl3mkeiojqa" path="res://scenes/flappy_frog.tscn" id="2_ij3mg"]
+[ext_resource type="Texture2D" uid="uid://dlc1qxdemi3jt" path="res://ui/brown_background.png" id="2_li021"]
 [ext_resource type="Texture2D" uid="uid://ru6gd8ro27ln" path="res://ui/exit_button.png" id="4_7iuy8"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="5_oxy8r"]
 
@@ -26,7 +27,9 @@ font = ExtResource("5_oxy8r")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yarhj"]
+
+[node name="Control" type="Control" node_paths=PackedStringArray("flappy_frog")]
 custom_minimum_size = Vector2(300, 250)
 layout_mode = 3
 anchors_preset = 8
@@ -41,6 +44,7 @@ offset_bottom = 125.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5ffxr")
+flappy_frog = NodePath("Panel/Panel/Flappy Frog")
 
 [node name="Panel" type="PanelContainer" parent="."]
 custom_minimum_size = Vector2(300, 250)
@@ -60,6 +64,19 @@ grow_vertical = 2
 [node name="Panel" type="Panel" parent="Panel"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_idkbv")
+
+[node name="ColorRect" type="TextureRect" parent="Panel/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 27.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_li021")
 
 [node name="Flappy Frog" parent="Panel/Panel" instance=ExtResource("2_ij3mg")]
 layout_mode = 1
@@ -94,6 +111,36 @@ offset_bottom = 26.0
 text = "flappy_frog.exe"
 label_settings = SubResource("LabelSettings_pnait")
 
+[node name="Pause Screen" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 30.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -14.5
+offset_top = -14.5
+offset_right = 14.5
+offset_bottom = 14.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("5_oxy8r")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/focus = SubResource("StyleBoxEmpty_yarhj")
+text = "Play!"
+
 [connection signal="mouse_entered" from="Toolbar" to="." method="_on_toolbar_mouse_entered"]
 [connection signal="mouse_exited" from="Toolbar" to="." method="_on_toolbar_mouse_exited"]
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Play Button" to="." method="_on_play_button_pressed"]
