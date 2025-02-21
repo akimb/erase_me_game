@@ -18,7 +18,7 @@ var possible_texts = {
 	4 : "Every day, he was there. Every night, he wouldn't leave. So I made sure he never would.",
 	5 : "static\nstd::uniform_int_distribution<std::size_t>\ndistr(0, a.size() - 1);",
 	6 : "@onready var collision_zone :\nArea2D = $Area2D",
-	7 : "for i in range(text_edit.text.length()):\nif i >= target_text.length():\nbreak",
+	7 : "for i in\nrange(text_edit.text.length()):\nif i >= target_text.length():\nbreak",
 	8 : "LOOK BEHIND YOU.",
 	9 : "DEBUG"
 }
