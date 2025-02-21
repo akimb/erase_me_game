@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://curl3mkeiojqa"]
+[gd_scene load_steps=26 format=3 uid="uid://curl3mkeiojqa"]
 
 [ext_resource type="Script" path="res://scripts/flappy_frog_character.gd" id="1_mi33r"]
 [ext_resource type="Script" path="res://scripts/flappy_frog_game_manager.gd" id="1_siyu7"]
@@ -94,19 +94,40 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86vcr"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gildc"]
+size = Vector2(294, 21)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6wut4"]
 size = Vector2(296, 20)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iovj4"]
 bg_color = Color(0.0962047, 0.0962048, 0.0962047, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2ggoy"]
 bg_color = Color(0, 1, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7sywj"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_vdqyr"]
 font = ExtResource("4_2syv1")
 font_size = 25
 font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wlatq"]
+font = ExtResource("4_2syv1")
+font_size = 25
+font_color = Color(1, 0, 0, 1)
 
 [node name="Flappy Frog" type="Control"]
 clip_contents = true
@@ -121,7 +142,6 @@ position = Vector2(150, 128)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_mi33r")
-progress_value = 0.5
 flappy_manager = NodePath("..")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Character"]
@@ -137,8 +157,15 @@ shape = SubResource("CircleShape2D_p04ks")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Character/Area2D"]
 shape = SubResource("CircleShape2D_86vcr")
 
+[node name="Ground Area" type="Area2D" parent="." groups=["ground"]]
+position = Vector2(12, 254)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground Area"]
+position = Vector2(137, -0.5)
+shape = SubResource("RectangleShape2D_gildc")
+
 [node name="Ground" type="StaticBody2D" parent="." groups=["ground"]]
-position = Vector2(12, 256)
+position = Vector2(12, 254)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" groups=["ground"]]
 position = Vector2(136, 0)
@@ -178,10 +205,12 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 28.0
+offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7sywj")
 
-[node name="Label" type="Label" parent="."]
+[node name="Success" type="Label" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -197,6 +226,25 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "ERASE SUCCESSFUL"
 label_settings = SubResource("LabelSettings_vdqyr")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fail" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ERASE FAIL"
+label_settings = SubResource("LabelSettings_wlatq")
 horizontal_alignment = 1
 vertical_alignment = 1
 

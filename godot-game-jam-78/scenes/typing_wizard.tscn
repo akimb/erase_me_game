@@ -1,0 +1,210 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7c1wn5c6n2y7"]
+
+[ext_resource type="FontFile" uid="uid://biecqt5mrvf20" path="res://assets/consolab.ttf" id="1_71qdp"]
+[ext_resource type="Script" path="res://scripts/typing_wizard_game.gd" id="1_m3m1k"]
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_fmh46"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1x7mc"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o3ctt"]
+bg_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wsof"]
+bg_color = Color(0, 1, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.0980392, 0.0980392, 0.0980392, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_btp3c"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o3036"]
+font = ExtResource("2_fmh46")
+font_size = 25
+font_color = Color(0, 1, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_wu7vy"]
+font = ExtResource("2_fmh46")
+font_size = 25
+font_color = Color(1, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_o1ytn"]
+font = ExtResource("2_fmh46")
+font_size = 25
+font_color = Color(1, 0.521569, 0, 1)
+
+[node name="Typing Wizard" type="Control"]
+clip_contents = true
+custom_minimum_size = Vector2(400, 270)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -202.0
+offset_top = -137.0
+offset_right = 231.0
+offset_bottom = 136.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m3m1k")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -41.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 2
+theme_override_constants/line_separation = 2
+theme_override_fonts/normal_font = ExtResource("1_71qdp")
+theme_override_font_sizes/normal_font_size = 22
+bbcode_enabled = true
+text = "[color=black]Click to begin program.[/color]"
+scroll_following = true
+selection_enabled = true
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -2.0
+offset_right = -41.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0.596512, 3.85046e-07, 1)
+theme_override_colors/caret_color = Color(0, 0, 0, 1)
+theme_override_constants/line_spacing = 2
+theme_override_constants/caret_width = 5
+theme_override_fonts/font = ExtResource("1_71qdp")
+theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxEmpty_1x7mc")
+context_menu_enabled = false
+drag_and_drop_selection_enabled = false
+wrap_mode = 1
+autowrap_mode = 2
+caret_blink = true
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 169.0
+offset_top = 224.0
+offset_right = 234.0
+offset_bottom = 247.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_fmh46")
+text = "Submit"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -40.0
+offset_top = -123.0
+offset_right = -27.0
+offset_bottom = 127.0
+grow_horizontal = 0
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_o3ctt")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7wsof")
+max_value = 1.0
+value = 1.0
+fill_mode = 3
+show_percentage = false
+
+[node name="Button2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 166.0
+offset_right = 138.0
+offset_bottom = 247.0
+text = "DEBUG"
+
+[node name="Panel" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_btp3c")
+
+[node name="Success" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ERASE SUCCESSFUL"
+label_settings = SubResource("LabelSettings_o3036")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Fail" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "ERASE FAIL"
+label_settings = SubResource("LabelSettings_wu7vy")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Invalid" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "INVALID"
+label_settings = SubResource("LabelSettings_o1ytn")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="focus_entered" from="TextEdit" to="." method="_on_text_edit_focus_entered"]
+[connection signal="text_changed" from="TextEdit" to="." method="_on_text_edit_text_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="value_changed" from="ProgressBar" to="." method="_on_progress_bar_value_changed"]
+[connection signal="pressed" from="Button2" to="." method="_on_button_2_pressed"]

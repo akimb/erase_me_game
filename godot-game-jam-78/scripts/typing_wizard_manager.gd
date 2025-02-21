@@ -1,7 +1,6 @@
 extends Control
 
-
-@export var flappy_frog : FlappyFrog = null
+@export var typing_wizard : TypingWizard = null
 @onready var pause_screen = $"Pause Screen"
 @onready var play_button = $"Play Button"
 
@@ -14,7 +13,7 @@ var mouse_in : bool = false
 func _ready():
 	pause_screen.visible = true
 	play_button.visible = true
-
+	
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and mouse_in:
@@ -37,12 +36,6 @@ func clamp_to_bounds(pos: Vector2) -> Vector2:
 
 	return pos
 
-func _on_toolbar_mouse_entered():
-	mouse_in = true
-
-func _on_toolbar_mouse_exited():
-	mouse_in = false
-
 func _on_button_pressed():
 	get_parent().remove_child(self)
 	self.queue_free()
@@ -50,4 +43,11 @@ func _on_button_pressed():
 func _on_play_button_pressed():
 	pause_screen.visible = false
 	play_button.visible = false
-	flappy_frog.process_mode = Node.PROCESS_MODE_INHERIT
+	typing_wizard.process_mode = Node.PROCESS_MODE_INHERIT
+
+func _on_toolbar_mouse_entered():
+	mouse_in = true
+
+
+func _on_toolbar_mouse_exited():
+	mouse_in = false

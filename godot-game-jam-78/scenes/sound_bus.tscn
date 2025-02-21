@@ -15,7 +15,7 @@
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5haf3"]
 playback_mode = 1
-random_pitch = 1.2
+random_pitch = 1.5
 streams_count = 1
 stream_0/stream = ExtResource("5_hplc5")
 

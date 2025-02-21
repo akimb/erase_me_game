@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ylcvcfgqc422"]
+[gd_scene load_steps=11 format=3 uid="uid://ylcvcfgqc422"]
 
 [ext_resource type="Script" path="res://scripts/computer_ui.gd" id="1_d5htc"]
 [ext_resource type="Theme" uid="uid://c85is4ndjcbp0" path="res://resources/default_theme.tres" id="1_r8al6"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="2_5titc"]
 [ext_resource type="PackedScene" uid="uid://kllfd8bau13m" path="res://scenes/notes_app.tscn" id="4_esihf"]
 [ext_resource type="PackedScene" uid="uid://d0tkhwa1s4hfm" path="res://scenes/flappy_frog_window.tscn" id="5_20cgr"]
+[ext_resource type="PackedScene" uid="uid://cvcxhpj7gap2n" path="res://scenes/typing_game_window.tscn" id="6_4ji1g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqf6y"]
 
@@ -208,13 +209,6 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 1, 1, 1)
 
-[node name="Notes App" parent="User UI" instance=ExtResource("4_esihf")]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 45.0
-offset_right = 72.0
-offset_bottom = 109.0
-
 [node name="Taskbar" type="ColorRect" parent="User UI"]
 layout_mode = 1
 anchors_preset = 10
@@ -254,12 +248,26 @@ label_settings = SubResource("LabelSettings_c5mrc")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="Notes App" parent="User UI" instance=ExtResource("4_esihf")]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 45.0
+offset_right = 72.0
+offset_bottom = 109.0
+
 [node name="Flappy Bird" parent="User UI" instance=ExtResource("5_20cgr")]
 layout_mode = 1
 offset_left = -198.0
 offset_top = -165.0
 offset_right = 102.0
 offset_bottom = 85.0
+
+[node name="Typing Game Window" parent="User UI" instance=ExtResource("6_4ji1g")]
+layout_mode = 1
+offset_left = -163.0
+offset_top = -148.0
+offset_right = 237.0
+offset_bottom = 102.0
 
 [node name="Shader Overlay" parent="." instance=ExtResource("2_5titc")]
 layout_mode = 0

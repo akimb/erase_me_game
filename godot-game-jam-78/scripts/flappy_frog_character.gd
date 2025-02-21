@@ -18,7 +18,7 @@ func _physics_process(delta):
 
 func _on_area_2d_body_entered(body):
 	if body.is_in_group("ground"):
-		print("HIT")
+		fail_sequence()
 
 func _on_area_2d_area_entered(area):
 	if area.is_in_group("score"):
@@ -26,4 +26,21 @@ func _on_area_2d_area_entered(area):
 		flappy_manager.check_progress()
 		
 	elif area.is_in_group("ground"):
-		print("HIT")
+		fail_sequence()
+
+func fail_sequence():
+	flappy_manager.panel.visible = true
+	flappy_manager.fail.visible = true
+	flappy_manager.fail.text = "ERASE FAILED"
+	flappy_manager.panel.get_parent().move_child(flappy_manager.panel, flappy_manager.panel.get_parent().get_child_count() - 1)
+	flappy_manager.fail.get_parent().move_child(flappy_manager.fail, flappy_manager.fail.get_parent().get_child_count() - 1)
+	var tween = get_tree().create_tween()
+	tween.tween_property(flappy_manager.fail, "visible", true, 0.2)
+	tween.tween_property(flappy_manager.fail, "visible", false, 0.2)
+	tween.tween_property(flappy_manager.fail, "visible", true, 0.2)
+	tween.tween_property(flappy_manager.fail, "visible", false, 0.2)
+	tween.tween_property(flappy_manager.fail, "visible", true, 0.2)
+	call_deferred("disable_game")
+
+func disable_game():
+	flappy_manager.process_mode = Node.PROCESS_MODE_DISABLED

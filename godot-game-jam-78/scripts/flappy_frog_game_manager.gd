@@ -6,7 +6,9 @@ signal erase_success
 
 @onready var progress_bar = $ProgressBar
 @onready var panel = $Panel
-@onready var label = $Label
+@onready var success = $Success
+@onready var fail = $Fail
+
 
 var pipe : PackedScene = preload("res://scenes/pipe.tscn")
 
@@ -14,7 +16,7 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_DISABLED
 	erase_success.connect(_full_progress_bar)
 	panel.visible = false
-	label.visible = false
+	success.visible = false
 
 func spawnPipe():
 	var pipeInstance = pipe.instantiate()
@@ -30,14 +32,17 @@ func check_progress():
 
 func _full_progress_bar():
 	panel.visible = true
-	label.visible = true
-	label.text = "ERASE SUCCESSFUL"
+	success.visible = true
+	#success.text = "ERASE SUCCESSFUL"
 	panel.get_parent().move_child(panel, panel.get_parent().get_child_count() - 1)
-	label.get_parent().move_child(label, label.get_parent().get_child_count() - 1)
+	success.get_parent().move_child(success, success.get_parent().get_child_count() - 1)
 	var tween = get_tree().create_tween()
-	tween.tween_property(label, "visible", true, 0.2)
-	tween.tween_property(label, "visible", false, 0.2)
-	tween.tween_property(label, "visible", true, 0.2)
-	tween.tween_property(label, "visible", false, 0.2)
-	tween.tween_property(label, "visible", true, 0.2)
+	tween.tween_property(success, "visible", true, 0.2)
+	tween.tween_property(success, "visible", false, 0.2)
+	tween.tween_property(success, "visible", true, 0.2)
+	tween.tween_property(success, "visible", false, 0.2)
+	tween.tween_property(success, "visible", true, 0.2)
+	call_deferred("disable_game")
+
+func disable_game():
 	process_mode = Node.PROCESS_MODE_DISABLED

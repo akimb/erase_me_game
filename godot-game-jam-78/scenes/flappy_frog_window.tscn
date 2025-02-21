@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d0tkhwa1s4hfm"]
+[gd_scene load_steps=12 format=3 uid="uid://d0tkhwa1s4hfm"]
 
 [ext_resource type="Script" path="res://scripts/flappy_frog_manager.gd" id="1_5ffxr"]
 [ext_resource type="PackedScene" uid="uid://curl3mkeiojqa" path="res://scenes/flappy_frog.tscn" id="2_ij3mg"]
@@ -26,6 +26,9 @@ border_color = Color(0, 0, 0, 1)
 font = ExtResource("5_oxy8r")
 font_size = 20
 font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xi0w8"]
+bg_color = Color(0, 0, 0, 0.5)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yarhj"]
 
@@ -90,10 +93,13 @@ grow_horizontal = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_qxfn5")
 
 [node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 271.0
-offset_right = 299.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
 offset_bottom = 28.0
+grow_horizontal = 0
 theme_override_colors/icon_pressed_color = Color(0.564962, 0.564962, 0.564962, 1)
 theme_override_colors/icon_hover_color = Color(0.666569, 0.666569, 0.666569, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wec5n")
@@ -120,6 +126,7 @@ anchor_bottom = 1.0
 offset_top = 30.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_xi0w8")
 
 [node name="Play Button" type="Button" parent="."]
 visible = false
@@ -138,7 +145,7 @@ grow_vertical = 2
 theme_override_fonts/font = ExtResource("5_oxy8r")
 theme_override_font_sizes/font_size = 30
 theme_override_styles/focus = SubResource("StyleBoxEmpty_yarhj")
-text = "Play!"
+text = "Start"
 
 [connection signal="mouse_entered" from="Toolbar" to="." method="_on_toolbar_mouse_entered"]
 [connection signal="mouse_exited" from="Toolbar" to="." method="_on_toolbar_mouse_exited"]
