@@ -7,6 +7,8 @@ class_name Monitor
 @onready var computer_access = $"Computer Access"
 @onready var computer_light = $"Computer Light"
 
+var boot_up : bool = true
+
 func _ready():
 	super()
 

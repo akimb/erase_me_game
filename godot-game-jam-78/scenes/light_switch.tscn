@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://c5m3qoaxoo8ot"]
+
+[ext_resource type="PackedScene" uid="uid://3vemfyd77tsf" path="res://assets/models/light_switch.glb" id="1_jklfw"]
+[ext_resource type="Script" path="res://scripts/light_switch.gd" id="2_wcuca"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xi6i"]
+albedo_color = Color(1, 0.857225, 0.599375, 1)
+emission_enabled = true
+emission = Color(0.694118, 0.596078, 0.415686, 1)
+emission_energy_multiplier = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5xuhn"]
+size = Vector3(2.1001, 6.9124, 4.41584)
+
+[node name="light_switch" node_paths=PackedStringArray("mesh_array") instance=ExtResource("1_jklfw")]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, 0)
+script = ExtResource("2_wcuca")
+mesh_array = [NodePath("Cube"), NodePath("Cube_001")]
+
+[node name="Cube_001" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227843, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_7xi6i")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0246582, 0.0511551, -0.0214043)
+shape = SubResource("BoxShape3D_5xuhn")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." index="3"]
+transform = Transform3D(-4.37114e-08, 1, 4.37114e-08, 0, -4.37114e-08, 1, 1, 4.37114e-08, 1.91069e-15, -42.3186, 154.473, 41.6152)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 42.3436
+spot_angle = 22.1341
+spot_angle_attenuation = 6.91804

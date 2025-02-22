@@ -1,0 +1,262 @@
+[gd_scene load_steps=19 format=3 uid="uid://c4erv23iwfn4d"]
+
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="1_5qmxu"]
+[ext_resource type="Script" path="res://scripts/eraser_window.gd" id="1_vuihe"]
+[ext_resource type="Texture2D" uid="uid://ru6gd8ro27ln" path="res://ui/exit_button.png" id="2_mkp45"]
+[ext_resource type="Texture2D" uid="uid://d4fmurgqtai0e" path="res://ui/eraser_icon.png" id="3_k0j7a"]
+[ext_resource type="Texture2D" uid="uid://dt52hug01pbrn" path="res://ui/email_button_icon_pressed.png" id="4_y8vn6"]
+[ext_resource type="Texture2D" uid="uid://c2mae7axsggyh" path="res://ui/hourglass.png" id="5_5w6qd"]
+[ext_resource type="PackedScene" uid="uid://0ayxwfsh14e6" path="res://scenes/erase_program.tscn" id="7_68m2g"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cow3n"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.603922, 0.603922, 0.603922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hifjm"]
+bg_color = Color(0.813258, 0.813258, 0.813258, 1)
+border_color = Color(0.603922, 0.603922, 0.603922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sm61v"]
+bg_color = Color(0.627451, 0.819608, 0.94902, 1)
+border_width_left = 1
+border_width_right = 1
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_c4806"]
+font = ExtResource("1_5qmxu")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_g4rsh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l4l7h"]
+font = ExtResource("1_5qmxu")
+font_size = 20
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Animation" id="Animation_kcgga"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0349066]
+}
+
+[sub_resource type="Animation" id="Animation_chfh3"]
+resource_name = "spin_hourglass"
+length = 4.0
+loop_mode = 1
+step = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("TextureRect:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2, 2.5, 3, 3.5, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0.0, 0.523599, 1.0472, 1.5708, 2.0944, 3.14159, 4.18879, 5.23599, 6.28319]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xli6k"]
+_data = {
+"RESET": SubResource("Animation_kcgga"),
+"spin_hourglass": SubResource("Animation_chfh3")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi57h"]
+bg_color = Color(0.105882, 0.105882, 0.105882, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u8i7w"]
+bg_color = Color(0, 1, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="Eraser Window" type="Control"]
+custom_minimum_size = Vector2(450, 300)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -225.0
+offset_top = -150.0
+offset_right = 225.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vuihe")
+
+[node name="Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_cow3n")
+
+[node name="Contrast Background" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 8.0
+offset_top = 36.0
+offset_right = -7.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_hifjm")
+
+[node name="Toolbar" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 30.0
+grow_horizontal = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_sm61v")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = 38.0
+offset_top = 4.0
+offset_right = 179.0
+offset_bottom = 32.0
+text = "mr_erase.exe"
+label_settings = SubResource("LabelSettings_c4806")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -28.0
+offset_bottom = 28.0
+grow_horizontal = 0
+theme_override_colors/icon_pressed_color = Color(0.564706, 0.564706, 0.564706, 1)
+theme_override_colors/icon_hover_color = Color(0.666667, 0.666667, 0.666667, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_g4rsh")
+icon = ExtResource("2_mkp45")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="Eraser Icon" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 3.0
+offset_top = -2.0
+offset_right = 35.0
+offset_bottom = 30.0
+texture = ExtResource("3_k0j7a")
+
+[node name="Title Overlay" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -217.0
+offset_top = 37.0
+offset_right = 217.0
+offset_bottom = 69.0
+grow_horizontal = 2
+texture = ExtResource("4_y8vn6")
+expand_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 232.0
+offset_top = 36.0
+offset_right = 264.0
+offset_bottom = 68.0
+rotation = 0.0349066
+pivot_offset = Vector2(17, 16)
+texture = ExtResource("5_5w6qd")
+
+[node name="Erase Processing" type="Label" parent="."]
+layout_mode = 0
+offset_left = 13.0
+offset_top = 42.0
+offset_right = 238.0
+offset_bottom = 67.0
+text = "ERASE PROCESSING..."
+label_settings = SubResource("LabelSettings_l4l7h")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 14.0
+offset_top = 100.0
+offset_right = -13.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="Erase Program" parent="VBoxContainer" instance=ExtResource("7_68m2g")]
+layout_mode = 2
+
+[node name="Erase Program2" parent="VBoxContainer" instance=ExtResource("7_68m2g")]
+layout_mode = 2
+
+[node name="Erase Program3" parent="VBoxContainer" instance=ExtResource("7_68m2g")]
+layout_mode = 2
+
+[node name="Erase Program4" parent="VBoxContainer" instance=ExtResource("7_68m2g")]
+layout_mode = 2
+
+[node name="Erase Program5" parent="VBoxContainer" instance=ExtResource("7_68m2g")]
+layout_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xli6k")
+}
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -216.0
+offset_top = -77.0
+offset_right = 216.0
+offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_5qmxu")
+theme_override_styles/background = SubResource("StyleBoxFlat_oi57h")
+theme_override_styles/fill = SubResource("StyleBoxFlat_u8i7w")
+max_value = 1.0
+value = 0.46
+
+[connection signal="mouse_entered" from="Toolbar" to="." method="_on_toolbar_mouse_entered"]
+[connection signal="mouse_exited" from="Toolbar" to="." method="_on_toolbar_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

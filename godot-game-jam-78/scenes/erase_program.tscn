@@ -1,0 +1,73 @@
+[gd_scene load_steps=9 format=3 uid="uid://0ayxwfsh14e6"]
+
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="1_dcqlu"]
+[ext_resource type="Script" path="res://scripts/erase_program.gd" id="3_b24kb"]
+[ext_resource type="Texture2D" uid="uid://csnao32wcmxox" path="res://ui/trash_icon.png" id="4_ykken"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_2nj2q"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pd605"]
+bg_color = Color(0.437441, 0.983785, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.545098, 0.545098, 0.545098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nuvof"]
+bg_color = Color(0, 0.925256, 0.947815, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.545098, 0.545098, 0.545098, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2h10l"]
+bg_color = Color(0.682353, 0.992157, 1, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.544974, 0.544974, 0.544974, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3rnhy"]
+
+[node name="Erase Program" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_b24kb")
+
+[node name="Program" type="Button" parent="."]
+layout_mode = 0
+offset_right = 376.0
+offset_bottom = 32.0
+theme_override_colors/font_hover_color = Color(0, 0.333333, 0.333333, 1)
+theme_override_colors/font_pressed_color = Color(0, 0.333333, 0.333333, 1)
+theme_override_colors/font_focus_color = Color(0, 0.333333, 0.333333, 1)
+theme_override_colors/font_color = Color(0, 0.333955, 0.333955, 1)
+theme_override_fonts/font = ExtResource("1_dcqlu")
+theme_override_font_sizes/font_size = 25
+theme_override_styles/focus = SubResource("StyleBoxEmpty_2nj2q")
+theme_override_styles/hover = SubResource("StyleBoxFlat_pd605")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nuvof")
+theme_override_styles/normal = SubResource("StyleBoxFlat_2h10l")
+text = "Run [sample_text.exe]"
+icon_alignment = 1
+
+[node name="Trash" type="Button" parent="."]
+layout_mode = 0
+offset_left = 374.0
+offset_top = -4.0
+offset_right = 414.0
+offset_bottom = 36.0
+theme_override_colors/icon_pressed_color = Color(0.564706, 0.564706, 0.564706, 1)
+theme_override_colors/icon_hover_color = Color(0.666667, 0.666667, 0.666667, 1)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_3rnhy")
+icon = ExtResource("4_ykken")
+flat = true
+icon_alignment = 1
+
+[connection signal="pressed" from="Program" to="." method="_on_program_pressed"]
+[connection signal="pressed" from="Trash" to="." method="_on_trash_pressed"]

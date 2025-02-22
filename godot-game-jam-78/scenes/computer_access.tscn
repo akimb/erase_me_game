@@ -1,8 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://dp8wv6cr46taw"]
+[gd_scene load_steps=13 format=3 uid="uid://dp8wv6cr46taw"]
 
 [ext_resource type="Script" path="res://scripts/computer_access.gd" id="1_t87eq"]
 [ext_resource type="QuadMesh" uid="uid://dss48niyphoip" path="res://resources/blue_screen.tres" id="2_c6b32"]
 [ext_resource type="PackedScene" uid="uid://ylcvcfgqc422" path="res://scenes/computer_ui.tscn" id="3_bguj6"]
+[ext_resource type="Texture2D" uid="uid://cd8o8n8c21l28" path="res://ui/jumpscare_image.png" id="3_eqg6q"]
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="4_vs2sn"]
+[ext_resource type="Shader" path="res://assets/shaders/desk_camera_glitch.gdshader" id="5_gds86"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_43knt"]
 viewport_path = NodePath("SubViewport")
@@ -10,6 +13,20 @@ viewport_path = NodePath("SubViewport")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbn3x"]
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_43knt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wtmxv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_b5prd"]
+font = ExtResource("4_vs2sn")
+font_size = 50
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w234y"]
+shader = ExtResource("5_gds86")
+shader_parameter/shake_power = 0.07
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.01
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kathb"]
 size = Vector3(53.8598, 40.1149, 3.17291)
@@ -26,6 +43,44 @@ surface_material_override/0 = SubResource("StandardMaterial3D_vbn3x")
 [node name="Camera" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.73196, 44.999, 48.0036)
 fov = 90.0
+
+[node name="Jumpscare Image" type="TextureRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_wtmxv")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_eqg6q")
+expand_mode = 1
+
+[node name="Label" type="Label" parent="Jumpscare Image"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -263.0
+offset_top = 144.0
+offset_right = 264.0
+offset_bottom = 188.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "I'M COMING FOR YOU"
+label_settings = SubResource("LabelSettings_b5prd")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Glitch" type="ColorRect" parent="Jumpscare Image"]
+material = SubResource("ShaderMaterial_w234y")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.73196, 44.999, 18.4623)

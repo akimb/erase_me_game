@@ -25,7 +25,7 @@ var minFov : int = 30
 var maxFov : int = 75
 
 var is_looking_back : bool = false
-var collider : StaticBody3D = null
+var collider = null
 
 func _ready():
 	add_to_group("player")

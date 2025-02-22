@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://do03phxh78x0u"]
+[gd_scene load_steps=16 format=3 uid="uid://do03phxh78x0u"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6qjif"]
 [ext_resource type="PackedScene" uid="uid://k4x24ga5rch7" path="res://assets/models/desk.glb" id="1_o1vky"]
@@ -10,7 +10,11 @@
 [ext_resource type="PackedScene" uid="uid://cyeafoym1je7k" path="res://scenes/pc.tscn" id="7_4xxfp"]
 [ext_resource type="PackedScene" uid="uid://3c0bv7nu2lbs" path="res://scenes/phone.tscn" id="9_nvogb"]
 [ext_resource type="PackedScene" uid="uid://p5r5yq3ejujd" path="res://scenes/sticky_note.tscn" id="10_7kvat"]
-[ext_resource type="PackedScene" uid="uid://puq7kx1i6joj" path="res://assets/models/doorway.glb" id="11_6v1au"]
+[ext_resource type="PackedScene" uid="uid://5fetekgo4w6u" path="res://scenes/toothmonster.tscn" id="12_yva0h"]
+[ext_resource type="PackedScene" uid="uid://c5m3qoaxoo8ot" path="res://scenes/light_switch.tscn" id="13_6buju"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tnpy3"]
+size = Vector2(100, 100)
 
 [sub_resource type="Sky" id="Sky_lwn4g"]
 
@@ -25,61 +29,98 @@ pc = NodePath("pc")
 desk_camera = NodePath("Desk Camera")
 
 [node name="Desk Camera" parent="." node_paths=PackedStringArray("monitor", "pc", "phone") instance=ExtResource("4_pf53h")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3656, 2.84772)
 monitor = NodePath("../monitor")
 pc = NodePath("../pc")
 phone = NodePath("../phone")
 
 [node name="monitor" parent="." node_paths=PackedStringArray("desk_camera") instance=ExtResource("4_8ihv2")]
-transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.2, 0.205587, -0.215821)
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.2, 10.1178, -0.215821)
 desk_camera = NodePath("../Desk Camera")
 
-[node name="desk" parent="." instance=ExtResource("1_o1vky")]
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_njxmg")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 17.146, 1.94121)
-light_energy = 10.0
-shadow_enabled = true
-spot_range = 42.3436
-spot_angle = 22.1341
-spot_angle_attenuation = 6.91804
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, 0.258819, -2.53415, 1.39941, 1.31524)
-visible = false
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.99866, -0.0517433, 0, 0.0517433, 0.99866, 0, 0, 0, 1, -2.15383, 3.44598, -1.97804)
-shaded = true
-texture = ExtResource("4_0dtf6")
-
-[node name="mouse" parent="." instance=ExtResource("5_i60qe")]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 1.17127, 0.220918, 1.22065)
-
-[node name="keyboard" parent="." instance=ExtResource("6_xmrk6")]
-transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.20474, 0.191593, -0.469754)
+[node name="light_switch" parent="." instance=ExtResource("13_6buju")]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, -3.89111, 11.2296, -1.93595)
 
 [node name="pc" parent="." node_paths=PackedStringArray("monitor", "desk_camera") instance=ExtResource("7_4xxfp")]
-transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.305706, 0, -0.131683)
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.227655, 9.96062, -0.126571)
 monitor = NodePath("../monitor")
 desk_camera = NodePath("../Desk Camera")
 
 [node name="phone" parent="." instance=ExtResource("9_nvogb")]
-transform = Transform3D(0.0384466, 0, 0.0319666, 0, 0.05, 0, -0.0319666, 0, 0.0384466, -2.12852, 0.205778, 0.917303)
+transform = Transform3D(0.0384466, 0, 0.0319666, 0, 0.05, 0, -0.0319666, 0, 0.0384466, -2.12852, 10.118, 0.917303)
 
-[node name="sticky_note" parent="." instance=ExtResource("10_7kvat")]
-transform = Transform3D(0.19924, -0.00131569, 0.0173648, 0.0173648, 0.0300768, -0.196962, -0.00131569, 0.197721, 0.0300768, -0.570201, 0.616663, 0.286928)
+[node name="toothmonster" parent="." node_paths=PackedStringArray("light_switch", "monitor", "phone", "pc", "outside_waypoints_parent") instance=ExtResource("12_yva0h")]
+transform = Transform3D(-0.0510634, 0, -0.998695, 0, 1, 0, 0.998695, 0, -0.0510634, -0.707036, 8.0152, 35.1039)
+light_switch = NodePath("../light_switch")
+monitor = NodePath("../monitor")
+phone = NodePath("../phone")
+pc = NodePath("../pc")
+outside_waypoints_parent = NodePath("../Outside Nav Nodes")
 
-[node name="doorway" parent="." instance=ExtResource("11_6v1au")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.1536)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.659913, 6.60796)
+mesh = SubResource("PlaneMesh_tnpy3")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="doorway"]
-transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 8.72174, -9.35126)
+[node name="desk" parent="." instance=ExtResource("1_o1vky")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.91221, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="desk"]
+transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 8.72174, 22.3221)
 light_color = Color(1, 0, 0, 1)
 spot_range = 30.1901
 spot_angle = 51.1142
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_njxmg")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.99866, -0.0517433, 0, 0.0517433, 0.99866, 0, 0, 0, 1, -2.15383, 13.3582, -1.97804)
+shaded = true
+texture = ExtResource("4_0dtf6")
+
+[node name="mouse" parent="." instance=ExtResource("5_i60qe")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 1.17127, 10.1331, 1.22065)
+
+[node name="keyboard" parent="." instance=ExtResource("6_xmrk6")]
+transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.20474, 10.1038, -0.469754)
+
+[node name="sticky_note" parent="." instance=ExtResource("10_7kvat")]
+transform = Transform3D(0.19924, -0.00131569, 0.0173648, 0.0173648, 0.0300768, -0.196962, -0.00131569, 0.197721, 0.0300768, -0.570201, 10.5289, 0.286928)
+
 [node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.42507, 30.2515)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3807, 44.7293)
+visible = false
+fov = 90.0
+
+[node name="Outside Nav Nodes" type="Node3D" parent="."]
+visible = false
+
+[node name="Node1" type="Node3D" parent="Outside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2265, 0, 45.0533)
+
+[node name="Node2" type="Node3D" parent="Outside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.593, 0, 17.7469)
+
+[node name="Node3" type="Node3D" parent="Outside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.593, 0, -15.2028)
+
+[node name="Node4" type="Node3D" parent="Outside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.2028)
+
+[node name="Node5" type="Node3D" parent="Outside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1342, 0, -15.2028)
+
+[node name="Node6" type="Node3D" parent="Outside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1342, 0, 13.0138)
+
+[node name="Node7" type="Node3D" parent="Outside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1342, 0, 44.3251)
+
+[node name="Node8" type="Node3D" parent="Outside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114649, 0, 44.3251)
+
+[node name="Doorway Node" type="Node3D" parent="."]
+transform = Transform3D(-0.0510634, 0, -0.998695, 0, 1, 0, 0.998695, 0, -0.0510634, 0.00466743, 0, 28.4693)
+
+[node name="Pablo Spawn Point" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0545, -3.8147e-06, 44.2875)

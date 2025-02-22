@@ -1,0 +1,108 @@
+[gd_scene load_steps=13 format=3 uid="uid://5fetekgo4w6u"]
+
+[ext_resource type="PackedScene" uid="uid://dq8cw8t5c6qdq" path="res://assets/models/toothmonster.glb" id="1_ldhhj"]
+[ext_resource type="Shader" path="res://assets/shaders/glitch_shader.gdshader" id="2_h48tf"]
+[ext_resource type="Script" path="res://scenes/toothmonster.gd" id="2_m5451"]
+[ext_resource type="Texture2D" uid="uid://b6kjjlcixke53" path="res://assets/models/toothmonster_horror eyes.jpg" id="3_dv28u"]
+[ext_resource type="Material" uid="uid://c5khl0d7mavst" path="res://resources/toothmonster_glitch_material.tres" id="3_oxmw5"]
+[ext_resource type="Texture2D" uid="uid://kl0ed1vui0dn" path="res://assets/models/toothmonster_intestine.jpg" id="6_iv6rx"]
+[ext_resource type="AudioStream" uid="uid://b8qr5ni14se8x" path="res://sounds/eraseme.ogg" id="7_ndo4g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lm8kh"]
+render_priority = 0
+shader = ExtResource("2_h48tf")
+shader_parameter/shake_power = 0.5
+shader_parameter/shake_rate = 0.1
+shader_parameter/shake_speed = 2.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 1.0
+shader_parameter/main_tex = ExtResource("3_dv28u")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vxw1j"]
+albedo_texture = ExtResource("3_dv28u")
+emission = Color(1, 0, 0, 1)
+emission_energy_multiplier = 0.15
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0n8tf"]
+render_priority = 0
+shader = ExtResource("2_h48tf")
+shader_parameter/shake_power = 0.1
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 2.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 1.0
+shader_parameter/main_tex = ExtResource("6_iv6rx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hhoct"]
+render_priority = 0
+shader = ExtResource("2_h48tf")
+shader_parameter/shake_power = 0.1
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 2.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 1.0
+shader_parameter/main_tex = ExtResource("6_iv6rx")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2xr8t"]
+render_priority = 0
+shader = ExtResource("2_h48tf")
+shader_parameter/shake_power = 0.1
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 2.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 1.0
+shader_parameter/main_tex = ExtResource("6_iv6rx")
+
+[node name="toothmonster" node_paths=PackedStringArray("monster_nav_agent") instance=ExtResource("1_ldhhj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.990831, 0)
+script = ExtResource("2_m5451")
+monster_nav_agent = NodePath("NavigationAgent3D")
+
+[node name="Icosphere" parent="." index="0"]
+transform = Transform3D(0.969098, -0.246678, 0, 0.246678, 0.969098, 0, 0, 0, 1, 0.0449553, 3.47717, 0)
+surface_material_override/0 = ExtResource("3_oxmw5")
+
+[node name="Sphere_001" parent="." index="1"]
+transform = Transform3D(0.299838, -0.00984722, 0, 0.00984722, 0.299838, 0, 0, 0, 0.3, -0.602566, 3.67066, -0.406957)
+material_overlay = SubResource("ShaderMaterial_lm8kh")
+surface_material_override/0 = SubResource("StandardMaterial3D_vxw1j")
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Sphere_001" index="0"]
+transform = Transform3D(0.969097, 0.246678, 0, -0.246678, 0.969097, 0, 0, 0, 1, -1.43658, 0.219047, -0.00255775)
+visible = false
+light_color = Color(2.79158e-06, 0.614921, 0.597167, 1)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Sphere_001" index="1"]
+transform = Transform3D(0.969097, 0.246678, 0, -0.246678, 0.969097, 0, 0, 0, 1, -1.43658, 0.219047, 2.60784)
+visible = false
+light_color = Color(2.79158e-06, 0.614921, 0.597167, 1)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.34622, 2.91405, 0)
+light_color = Color(1, 0.447059, 0.435294, 1)
+shadow_enabled = true
+omni_range = 1.1
+
+[node name="BézierCurve" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.181633, 0, 0)
+material_overlay = SubResource("ShaderMaterial_0n8tf")
+
+[node name="BézierCurve_001" parent="." index="4"]
+transform = Transform3D(0.581744, -0.851684, 0.178087, 0.811378, 0.588667, -0.203501, 0.0635639, 0.280511, 0.967765, 2.7374, 1.55489, -0.710311)
+material_overlay = ExtResource("3_oxmw5")
+
+[node name="BézierCurve_002" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.220633, 1.05032, 0.93475)
+material_overlay = SubResource("ShaderMaterial_hhoct")
+
+[node name="BézierCurve_003" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.258181, 2.51342, 0.640556)
+material_overlay = SubResource("ShaderMaterial_2xr8t")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.163505, 3.32769, 0)
+stream = ExtResource("7_ndo4g")
+volume_db = 20.0
+unit_size = 1.0
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." index="8"]

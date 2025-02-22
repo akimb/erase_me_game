@@ -6,7 +6,7 @@ extends TextureRect
 var in_notes : bool = false
 
 func _ready():
-	notes.visible = false
+	notes.visible = true
 
 func _on_mouse_entered():
 	in_notes = true

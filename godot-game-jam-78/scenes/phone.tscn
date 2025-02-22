@@ -8,10 +8,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_nfmv4"]
 size = Vector3(20.9575, 10.2802, 20.5064)
 
-[node name="phone" node_paths=PackedStringArray("mesh") instance=ExtResource("1_ohh38")]
+[node name="phone" node_paths=PackedStringArray("mesh_array") instance=ExtResource("1_ohh38")]
 transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 script = ExtResource("2_37upd")
-mesh = NodePath("phone")
+mesh_array = [NodePath("phone"), NodePath("phone_receiver"), NodePath("phonecord")]
 
 [node name="phonecord" parent="." index="0"]
 material_override = ExtResource("2_vgtvu")

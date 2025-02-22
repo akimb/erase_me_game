@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://d5wteti0whd0"]
+
+[ext_resource type="Texture2D" uid="uid://kl0ed1vui0dn" path="res://assets/models/toothmonster_intestine.jpg" id="1_b0b2y"]
+
+[resource]
+albedo_texture = ExtResource("1_b0b2y")

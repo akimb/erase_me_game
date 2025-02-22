@@ -29,6 +29,7 @@ func _on_area_2d_area_entered(area):
 		fail_sequence()
 
 func fail_sequence():
+	SoundBus.erase_failed.play()
 	flappy_manager.panel.visible = true
 	flappy_manager.fail.visible = true
 	flappy_manager.fail.text = "ERASE FAILED"
@@ -43,4 +44,6 @@ func fail_sequence():
 	call_deferred("disable_game")
 
 func disable_game():
-	flappy_manager.process_mode = Node.PROCESS_MODE_DISABLED
+	flappy_manager.spawn_timer.process_mode = Node.PROCESS_MODE_DISABLED
+	process_mode = Node.PROCESS_MODE_DISABLED
+	get_parent().process_mode = Node.PROCESS_MODE_DISABLED

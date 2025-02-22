@@ -1,0 +1,14 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://c5khl0d7mavst"]
+
+[ext_resource type="Shader" path="res://assets/shaders/glitch_shader.gdshader" id="1_tngok"]
+[ext_resource type="Texture2D" uid="uid://dli6iwqisedqy" path="res://assets/models/toothmonster_monster teeth.jpg" id="2_vi3yr"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_tngok")
+shader_parameter/shake_power = 0.1
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 2.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 1.0
+shader_parameter/main_tex = ExtResource("2_vi3yr")

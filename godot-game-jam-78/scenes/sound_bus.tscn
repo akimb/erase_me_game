@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://bgxec2merl3nd"]
+[gd_scene load_steps=20 format=3 uid="uid://bgxec2merl3nd"]
 
 [ext_resource type="Script" path="res://scripts/sound_bus.gd" id="1_mhstk"]
 [ext_resource type="AudioStream" uid="uid://bjmm70duroctm" path="res://sounds/busy_signal.ogg" id="2_hoqul"]
+[ext_resource type="AudioStream" uid="uid://bgl7t6vvw31ri" path="res://sounds/buzzing.ogg" id="3_apaeb"]
 [ext_resource type="AudioStream" uid="uid://b42c3c5htxxy3" path="res://sounds/backrooms.mp3" id="3_m0fyt"]
 [ext_resource type="AudioStream" uid="uid://b1jwaq1ypfw4c" path="res://sounds/creepy_ambience.ogg" id="4_lvdim"]
 [ext_resource type="AudioStream" uid="uid://cv44ortlsaw2u" path="res://sounds/keyboard_press.ogg" id="5_hplc5"]
@@ -10,8 +11,13 @@
 [ext_resource type="AudioStream" uid="uid://em2qt454bvau" path="res://sounds/phone_call_1.ogg" id="7_qsbvs"]
 [ext_resource type="AudioStream" uid="uid://nd7b8w5dvpqx" path="res://sounds/put_down_phone.ogg" id="8_i0gme"]
 [ext_resource type="AudioStream" uid="uid://cf4uyu6qb2alu" path="res://sounds/pick_up_phone.ogg" id="9_n8h5q"]
+[ext_resource type="AudioStream" uid="uid://dx0lr1rfu5hdt" path="res://sounds/phone_call_2.ogg" id="10_ah6ky"]
 [ext_resource type="AudioStream" uid="uid://nejsaulataag" path="res://sounds/test_phone_call.ogg" id="11_etbnx"]
 [ext_resource type="AudioStream" uid="uid://c7o3oeavl0vij" path="res://sounds/mouse_click.ogg" id="12_f1ed3"]
+[ext_resource type="AudioStream" uid="uid://du3sk2cclj45" path="res://sounds/succeed_numpad.mp3" id="13_xfx45"]
+[ext_resource type="AudioStream" uid="uid://b1yqkmar8wkic" path="res://sounds/fail_numpad.mp3" id="14_gxbt3"]
+[ext_resource type="AudioStream" uid="uid://bkvav4jbf00b2" path="res://sounds/light_on.ogg" id="15_v2wky"]
+[ext_resource type="AudioStream" uid="uid://bgqtncqrbvucy" path="res://sounds/light_off.ogg" id="16_bjhcl"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5haf3"]
 playback_mode = 1
@@ -25,6 +31,10 @@ script = ExtResource("1_mhstk")
 [node name="Busy Signal" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_hoqul")
 volume_db = -5.0
+
+[node name="Buzzing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_apaeb")
+volume_db = -10.0
 
 [node name="Backrooms" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_m0fyt")
@@ -52,6 +62,9 @@ volume_db = -5.0
 stream = ExtResource("7_qsbvs")
 volume_db = -5.0
 
+[node name="Phone Call 2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_ah6ky")
+
 [node name="Put Down Phone" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_i0gme")
 volume_db = -5.0
@@ -68,4 +81,22 @@ stream = ExtResource("12_f1ed3")
 volume_db = -5.0
 max_polyphony = 10
 
+[node name="Erase Successful" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_xfx45")
+volume_db = -5.0
+max_polyphony = 10
+
+[node name="Erase Failed" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gxbt3")
+volume_db = -5.0
+max_polyphony = 10
+
+[node name="Light Off" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_v2wky")
+
+[node name="Light On" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_bjhcl")
+volume_db = -5.0
+
 [connection signal="finished" from="Phone Call 1" to="." method="_on_phone_call_1_finished"]
+[connection signal="finished" from="Phone Call 2" to="." method="_on_phone_call_2_finished"]

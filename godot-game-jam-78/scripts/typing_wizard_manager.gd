@@ -17,7 +17,7 @@ func _ready():
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and mouse_in:
-			self.get_parent().move_child(self, self.get_parent().get_child_count() - 1)
+			self.get_parent().move_child(self, self.get_parent().get_child_count() - 2)
 			offset = get_global_mouse_position() - global_position
 			dragging = true
 		elif event.is_released():

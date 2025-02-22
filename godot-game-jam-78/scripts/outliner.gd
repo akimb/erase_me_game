@@ -2,7 +2,8 @@ extends StaticBody3D
 
 class_name OutlineInteraction
 
-@export var mesh : MeshInstance3D = null
+#@export var mesh : MeshInstance3D = null
+@export var mesh_array : Array[MeshInstance3D] = []
 
 var outline : ShaderMaterial = preload("res://resources/outline_material.tres")
 var selected : bool = false
@@ -19,12 +20,16 @@ func _ready():
 
 func _update_outline():
 	if selected:
-		mesh.material_overlay = outline
+		for meshes in mesh_array:
+			meshes.material_overlay = outline
 	else:
-		mesh.material_overlay = null
+		for meshes in mesh_array:
+			meshes.material_overlay = null
 
 func _destroy_outline():
-	mesh.material_overlay = null
+	for meshes in mesh_array:
+			meshes.material_overlay = null
+	#mesh.material_overlay = null
 
 func _set_selected(object):
 	selected = (object == self)

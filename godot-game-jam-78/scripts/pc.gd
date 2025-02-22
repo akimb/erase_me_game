@@ -21,12 +21,19 @@ func _process(_delta):
 
 func interact():
 	if selected_object == self:
+		var ui = monitor.computer_access.computer_ui
 		monitor.computer_access.visible = !monitor.computer_access.visible
 		monitor.computer_light.visible = !monitor.computer_light.visible
+		
+		ui.bootup_sequence.visible = true
+		ui.start_bootup_animation()
+		ui.user_ui.visible = false
+		ui.user_ui.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		if monitor.computer_light.visible:
 			pc_indicator.material_overlay = green
 		else:
 			pc_indicator.material_overlay = red
+		
 		selected_object = null
 		selected = false

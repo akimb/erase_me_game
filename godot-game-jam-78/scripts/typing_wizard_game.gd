@@ -13,7 +13,7 @@ class_name TypingWizard
 var possible_texts = {
 	0 : "The air was musty and stale, and I could hear the creaking of the floorboards beneath my feet.",
 	1 : "The snow was falling softly outside, creating a winter wonderland. I snuggled up by the fire with a cup of hot cocoa, feeling cozy and content.",
-	2 : "As I entered the old, abandoned house, I couldn't help but feel a sense of unease wash over me.",
+	2 : "As I entered the old, abandoned house I couldn't help but feel a sense of unease wash over me.",
 	3 : "for(int i = 0; i < len; i++)\nr.push_back(a.at(size_t(rand() % 62)));",
 	4 : "Every day, he was there. Every night, he wouldn't leave. So I made sure he never would.",
 	5 : "static\nstd::uniform_int_distribution<std::size_t>\ndistr(0, a.size() - 1);",
@@ -101,6 +101,7 @@ func end_condition(cond : bool):
 	panel.visible = true
 	
 	if cond:
+		SoundBus.erase_successful.play()
 		success.visible = true
 		panel.get_parent().move_child(panel, panel.get_parent().get_child_count() - 1)
 		success.get_parent().move_child(success, success.get_parent().get_child_count() - 1)
@@ -111,6 +112,7 @@ func end_condition(cond : bool):
 		tween.tween_property(success, "visible", false, 0.2)
 		tween.tween_property(success, "visible", true, 0.2)
 	else:
+		SoundBus.erase_failed.play()
 		fail.visible = true
 		panel.get_parent().move_child(panel, panel.get_parent().get_child_count() - 1)
 		fail.get_parent().move_child(fail, fail.get_parent().get_child_count() - 1)

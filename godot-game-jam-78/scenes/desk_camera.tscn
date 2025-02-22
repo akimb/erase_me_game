@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://1fsjaieb1emb"]
+[gd_scene load_steps=9 format=3 uid="uid://1fsjaieb1emb"]
 
 [ext_resource type="Texture2D" uid="uid://8l4h2yd0m56u" path="res://ui/tiles/tile_0122.png" id="1_2qlyu"]
 [ext_resource type="Script" path="res://scripts/desk_camera.gd" id="1_i00jy"]
@@ -19,6 +19,9 @@ font_size = 25
 [sub_resource type="LabelSettings" id="LabelSettings_8d11m"]
 font = ExtResource("4_rvetp")
 font_size = 25
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_bnsxb"]
+radius = 9.57974
 
 [node name="Desk Camera" type="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45339, 2.84772)
@@ -55,7 +58,7 @@ texture = ExtResource("1_2qlyu")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Desk UI"]
 
-[node name="ColorRect" type="ColorRect" parent="Desk UI/CanvasLayer"]
+[node name="Shader Overlay" type="ColorRect" parent="Desk UI/CanvasLayer"]
 material = SubResource("ShaderMaterial_yx3m8")
 anchors_preset = 15
 anchor_right = 1.0
@@ -82,8 +85,10 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="Time" type="Label" parent="CanvasLayer"]
+visible = false
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -97,3 +102,8 @@ label_settings = SubResource("LabelSettings_8d11m")
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 2
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_bnsxb")

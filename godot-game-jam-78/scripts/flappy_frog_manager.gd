@@ -1,5 +1,6 @@
 extends Control
 
+class_name FlappyManager
 
 @export var flappy_frog : FlappyFrog = null
 @onready var pause_screen = $"Pause Screen"
@@ -16,9 +17,11 @@ func _ready():
 	play_button.visible = true
 
 func _input(event):
+	if Input.is_action_just_pressed("jump"):
+		flappy_frog.process_mode = Node.PROCESS_MODE_INHERIT
 	if event is InputEventMouseButton:
 		if event.pressed and mouse_in:
-			self.get_parent().move_child(self, self.get_parent().get_child_count() - 1)
+			self.get_parent().move_child(self, self.get_parent().get_child_count() - 2)
 			offset = get_global_mouse_position() - global_position
 			dragging = true
 		elif event.is_released():
@@ -50,4 +53,4 @@ func _on_button_pressed():
 func _on_play_button_pressed():
 	pause_screen.visible = false
 	play_button.visible = false
-	flappy_frog.process_mode = Node.PROCESS_MODE_INHERIT
+	flappy_frog.set_instructions()

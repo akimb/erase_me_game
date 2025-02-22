@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://curl3mkeiojqa"]
+[gd_scene load_steps=27 format=3 uid="uid://curl3mkeiojqa"]
 
 [ext_resource type="Script" path="res://scripts/flappy_frog_character.gd" id="1_mi33r"]
 [ext_resource type="Script" path="res://scripts/flappy_frog_game_manager.gd" id="1_siyu7"]
@@ -129,6 +129,10 @@ font = ExtResource("4_2syv1")
 font_size = 25
 font_color = Color(1, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_6dywk"]
+font = ExtResource("4_2syv1")
+font_color = Color(0, 0, 0, 1)
+
 [node name="Flappy Frog" type="Control"]
 clip_contents = true
 layout_mode = 3
@@ -247,6 +251,26 @@ text = "ERASE FAIL"
 label_settings = SubResource("LabelSettings_wlatq")
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="Begin" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.0
+offset_top = 25.0
+offset_right = 112.0
+offset_bottom = 78.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Press Space to begin erase compiler"
+label_settings = SubResource("LabelSettings_6dywk")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
 
 [connection signal="area_entered" from="Character/Area2D" to="Character" method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Character/Area2D" to="Character" method="_on_area_2d_body_entered"]

@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://d14021tr0asi4"]
+
+[ext_resource type="Texture2D" uid="uid://d4fmurgqtai0e" path="res://ui/eraser_icon.png" id="1_obcbn"]
+[ext_resource type="Script" path="res://scripts/mr_erase_app.gd" id="2_gn7x2"]
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_niotn"]
+[ext_resource type="PackedScene" uid="uid://c4erv23iwfn4d" path="res://scenes/eraser_window.tscn" id="4_frdli"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_mcawy"]
+font = ExtResource("2_niotn")
+font_color = Color(0, 0, 0, 1)
+
+[node name="Mr_ Erase App" type="TextureRect"]
+custom_minimum_size = Vector2(64, 64)
+offset_left = 24.0
+offset_right = 64.0
+offset_bottom = 40.0
+texture = ExtResource("1_obcbn")
+script = ExtResource("2_gn7x2")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+offset_left = -6.0
+offset_top = 63.0
+offset_right = 79.0
+offset_bottom = 96.0
+text = "Mr. Erase "
+label_settings = SubResource("LabelSettings_mcawy")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Eraser Window" parent="." instance=ExtResource("4_frdli")]
+layout_mode = 1
+offset_left = 82.0
+offset_top = -17.0
+offset_right = 532.0
+offset_bottom = 283.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

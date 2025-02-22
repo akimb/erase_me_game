@@ -1,14 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://ylcvcfgqc422"]
+[gd_scene load_steps=9 format=3 uid="uid://ylcvcfgqc422"]
 
 [ext_resource type="Script" path="res://scripts/computer_ui.gd" id="1_d5htc"]
 [ext_resource type="Theme" uid="uid://c85is4ndjcbp0" path="res://resources/default_theme.tres" id="1_r8al6"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_3scss"]
 [ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="2_5titc"]
 [ext_resource type="PackedScene" uid="uid://kllfd8bau13m" path="res://scenes/notes_app.tscn" id="4_esihf"]
-[ext_resource type="PackedScene" uid="uid://d0tkhwa1s4hfm" path="res://scenes/flappy_frog_window.tscn" id="5_20cgr"]
-[ext_resource type="PackedScene" uid="uid://cvcxhpj7gap2n" path="res://scenes/typing_game_window.tscn" id="6_4ji1g"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xqf6y"]
+[ext_resource type="PackedScene" uid="uid://d14021tr0asi4" path="res://scenes/mr_erase_app.tscn" id="8_a8f6p"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8bnj3"]
 font = ExtResource("2_3scss")
@@ -36,7 +33,6 @@ mouse_filter = 2
 script = ExtResource("1_d5htc")
 
 [node name="Bootup Sequence" type="ColorRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -156,41 +152,11 @@ Client task not privileged to open IOHIDSystem for mapping memory (e00002c1)
 [OSBootTheme]
 
  
-Boot Complete"
+Boot Complete. [PRESS ENTER TO CONTINUE]█
+
+"
+scroll_active = false
 scroll_following = true
-
-[node name="Button" type="Button" parent="Bootup Sequence"]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 69.0
-offset_top = -182.0
-offset_right = 260.0
-offset_bottom = -134.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_r8al6")
-text = "press button here!"
-
-[node name="LineEdit" type="LineEdit" parent="Bootup Sequence"]
-layout_mode = 0
-offset_left = 361.0
-offset_top = 387.0
-offset_right = 564.0
-offset_bottom = 423.0
-theme = ExtResource("1_r8al6")
-theme_override_colors/caret_color = Color(0.219608, 0.670588, 0.235294, 1)
-theme_override_colors/font_color = Color(0.219608, 0.670588, 0.235294, 1)
-theme_override_constants/caret_width = 5
-theme_override_fonts/font = ExtResource("2_3scss")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_xqf6y")
-placeholder_text = "put text here"
-context_menu_enabled = false
-flat = true
-caret_blink = true
 
 [node name="User UI" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(600, 512)
@@ -255,19 +221,12 @@ offset_top = 45.0
 offset_right = 72.0
 offset_bottom = 109.0
 
-[node name="Flappy Bird" parent="User UI" instance=ExtResource("5_20cgr")]
-layout_mode = 1
-offset_left = -198.0
-offset_top = -165.0
-offset_right = 102.0
-offset_bottom = 85.0
-
-[node name="Typing Game Window" parent="User UI" instance=ExtResource("6_4ji1g")]
-layout_mode = 1
-offset_left = -163.0
-offset_top = -148.0
-offset_right = 237.0
-offset_bottom = 102.0
+[node name="Mr_ Erase App" parent="User UI" instance=ExtResource("8_a8f6p")]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 125.0
+offset_right = 73.0
+offset_bottom = 189.0
 
 [node name="Shader Overlay" parent="." instance=ExtResource("2_5titc")]
 layout_mode = 0
@@ -282,5 +241,3 @@ offset_right = 600.0
 offset_bottom = 512.0
 grow_horizontal = 1
 grow_vertical = 1
-
-[connection signal="text_changed" from="Bootup Sequence/LineEdit" to="." method="_on_line_edit_text_changed"]

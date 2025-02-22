@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="godot game jam 78"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -27,6 +27,7 @@ window/stretch/aspect="expand"
 [global_group]
 
 ground=""
+monster_navmesh=""
 
 [input]
 

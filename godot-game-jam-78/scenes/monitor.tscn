@@ -7,10 +7,10 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_fvjx8"]
 size = Vector3(68.137, 61.6124, 20.5737)
 
-[node name="monitor" node_paths=PackedStringArray("mesh") instance=ExtResource("2_emi4d")]
+[node name="monitor" node_paths=PackedStringArray("mesh_array") instance=ExtResource("2_emi4d")]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.2, 0, 0)
 script = ExtResource("2_mgjs5")
-mesh = NodePath("Monitor_Material_003_0")
+mesh_array = [NodePath("Monitor_Material_003_0")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.66465, 42.269, 8.50968)

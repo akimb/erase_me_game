@@ -1,5 +1,7 @@
 extends OutlineInteraction
 
+class_name Phone
+
 @onready var phone_light = $"Phone Light"
 @onready var caller_id = $CallerID
 @onready var incoming_call = $"Incoming Call"
@@ -13,7 +15,8 @@ func _ready():
 	super()
 	caller_id.visible = false
 	incoming_call.visible = false
-	calls = [SoundBus.phone_call_1]
+	#calls = [SoundBus.phone_call_1, SoundBus.phone_call_2]
+	calls = [SoundBus.phone_call_2]
 	play_ringtone()
 	continue_story = true
 

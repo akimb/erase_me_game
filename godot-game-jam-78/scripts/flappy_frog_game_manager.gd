@@ -8,8 +8,10 @@ signal erase_success
 @onready var panel = $Panel
 @onready var success = $Success
 @onready var fail = $Fail
+@onready var begin = $Begin
+@onready var spawn_timer = $"Spawn Timer"
 
-
+var button_pressed : bool = false
 var pipe : PackedScene = preload("res://scenes/pipe.tscn")
 
 func _ready():
@@ -31,9 +33,9 @@ func check_progress():
 		erase_success.emit()
 
 func _full_progress_bar():
+	SoundBus.erase_successful.play()
 	panel.visible = true
 	success.visible = true
-	#success.text = "ERASE SUCCESSFUL"
 	panel.get_parent().move_child(panel, panel.get_parent().get_child_count() - 1)
 	success.get_parent().move_child(success, success.get_parent().get_child_count() - 1)
 	var tween = get_tree().create_tween()
@@ -46,3 +48,10 @@ func _full_progress_bar():
 
 func disable_game():
 	process_mode = Node.PROCESS_MODE_DISABLED
+
+func set_instructions():
+	begin.visible = true
+
+func _input(_event):
+	if Input.is_action_just_pressed("jump"):
+		begin.visible = false

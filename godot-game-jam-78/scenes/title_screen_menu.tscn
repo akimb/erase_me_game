@@ -1,9 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://ceucp0hqjw15s"]
+[gd_scene load_steps=8 format=3 uid="uid://ceucp0hqjw15s"]
 
 [ext_resource type="Script" path="res://scripts/title_screen.gd" id="1_fel4v"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_86mbq"]
 [ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="3_c4mgg"]
 [ext_resource type="Shader" path="res://assets/shaders/computer_warp.gdshader" id="4_sqkfc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uc088"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1a68q"]
 
@@ -40,6 +42,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_fel4v")
 
+[node name="MENU" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0646965, 0.0646965, 0.0646965, 1)
+
 [node name="Label" type="LineEdit" parent="."]
 layout_mode = 1
 anchors_preset = 8
@@ -47,10 +58,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -227.5
-offset_top = -37.0
-offset_right = 227.5
-offset_bottom = 37.0
+offset_left = -224.0
+offset_top = -92.0
+offset_right = 231.0
+offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_colors/caret_color = Color(1, 0, 0, 1)
@@ -58,6 +69,7 @@ theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_constants/caret_width = 15
 theme_override_fonts/font = ExtResource("2_86mbq")
 theme_override_font_sizes/font_size = 75
+theme_override_styles/focus = SubResource("StyleBoxEmpty_uc088")
 theme_override_styles/read_only = SubResource("StyleBoxEmpty_1a68q")
 text = "ERASE ME."
 alignment = 1
@@ -74,17 +86,17 @@ caret_blink = true
 caret_column = 9
 caret_force_displayed = true
 
-[node name="Button" type="Button" parent="."]
+[node name="Play" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -33.0
-offset_top = 50.0
-offset_right = 34.0
-offset_bottom = 80.0
+offset_left = -32.0
+offset_top = -4.0
+offset_right = 35.0
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_86mbq")
@@ -92,17 +104,17 @@ theme_override_font_sizes/font_size = 25
 text = "PLAY"
 flat = true
 
-[node name="Button2" type="Button" parent="."]
+[node name="Controls" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -73.0
-offset_top = 87.0
-offset_right = 74.0
-offset_bottom = 117.0
+offset_left = -72.0
+offset_top = 36.0
+offset_right = 75.0
+offset_bottom = 66.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_86mbq")
@@ -110,17 +122,35 @@ theme_override_font_sizes/font_size = 25
 text = "CONTROLS"
 flat = true
 
-[node name="Button3" type="Button" parent="."]
+[node name="Settings" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = 126.0
-offset_right = 56.0
-offset_bottom = 156.0
+offset_left = -72.0
+offset_top = 76.0
+offset_right = 75.0
+offset_bottom = 106.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("2_86mbq")
+theme_override_font_sizes/font_size = 25
+text = "SETTINGS"
+flat = true
+
+[node name="Credits" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -56.0
+offset_top = 116.0
+offset_right = 55.0
+offset_bottom = 146.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_86mbq")
@@ -128,23 +158,92 @@ theme_override_font_sizes/font_size = 25
 text = "CREDITS"
 flat = true
 
-[node name="Button4" type="Button" parent="."]
+[node name="Quit" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -55.0
-offset_top = 166.0
-offset_right = 56.0
-offset_bottom = 196.0
+offset_left = -56.0
+offset_top = 156.0
+offset_right = 55.0
+offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_86mbq")
 theme_override_font_sizes/font_size = 25
 text = "QUIT"
 flat = true
+
+[node name="CONTROLS" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="CONTROLS"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 60.0
+offset_top = 180.0
+offset_right = 60.0
+offset_bottom = 180.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_86mbq")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=red]right click[/color] to exit computer screen
+[color=red]mouse wheel[/color] to zoom
+[color=red]left click[/color] to interact
+[color=red]mouse[/color] to look around
+[color=red]Esc[/color] to pause
+[color=red]Q or E[/color] to look back"
+
+[node name="SETTINGS" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="CREDITS" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0627451, 0.0627451, 0.0627451, 1)
+
+[node name="Return to Menu" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -128.0
+offset_top = -92.0
+offset_right = 126.0
+offset_bottom = -57.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_fonts/font = ExtResource("2_86mbq")
+theme_override_font_sizes/font_size = 30
+text = "RETURN TO MENU"
 
 [node name="Shader Overlay" parent="." instance=ExtResource("3_c4mgg")]
 material = SubResource("ShaderMaterial_6c4wx")
@@ -162,4 +261,8 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
-[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="Return to Menu" to="." method="_on_return_to_menu_pressed"]
