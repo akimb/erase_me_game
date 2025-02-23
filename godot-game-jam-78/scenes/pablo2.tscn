@@ -1,0 +1,112 @@
+[gd_scene load_steps=12 format=3 uid="uid://bpwepnlpssxo6"]
+
+[ext_resource type="PackedScene" uid="uid://bt6ekn868xs0w" path="res://assets/models/eraser_zombie.glb" id="1_giifa"]
+[ext_resource type="Script" path="res://scripts/toothmonster.gd" id="2_arjoe"]
+[ext_resource type="Shader" path="res://assets/shaders/glitch_shader.gdshader" id="2_v5ig8"]
+[ext_resource type="Texture2D" uid="uid://codt46cldgwxn" path="res://assets/models/eraser_zombie_albedo.png" id="3_l1o52"]
+[ext_resource type="Texture2D" uid="uid://p0iny881or5d" path="res://assets/models/eraser_zombie_zombie_c.png" id="4_ptsox"]
+[ext_resource type="AudioStream" uid="uid://b8qr5ni14se8x" path="res://sounds/eraseme.ogg" id="5_1lmsu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_huhg8"]
+render_priority = 0
+shader = ExtResource("2_v5ig8")
+shader_parameter/shake_power = 0.5
+shader_parameter/shake_rate = 0.5
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 1.0
+shader_parameter/main_tex = ExtResource("3_l1o52")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t211y"]
+render_priority = 0
+shader = ExtResource("2_v5ig8")
+shader_parameter/shake_power = 0.5
+shader_parameter/shake_rate = 0.5
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.5
+shader_parameter/main_tex = ExtResource("3_l1o52")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jhu3d"]
+render_priority = 0
+shader = ExtResource("2_v5ig8")
+shader_parameter/shake_power = 0.1
+shader_parameter/shake_rate = 0.5
+shader_parameter/shake_speed = 5.0
+shader_parameter/shake_block_size = 30.5
+shader_parameter/shake_color_rate = 0.5
+shader_parameter/main_tex = ExtResource("3_l1o52")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_61poc"]
+render_priority = 0
+shader = ExtResource("2_v5ig8")
+shader_parameter/shake_power = 0.1
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 2.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 1.0
+shader_parameter/main_tex = ExtResource("4_ptsox")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4ijc1"]
+render_priority = 0
+shader = ExtResource("2_v5ig8")
+shader_parameter/shake_power = 0.1
+shader_parameter/shake_rate = 1.0
+shader_parameter/shake_speed = 2.0
+shader_parameter/shake_block_size = 10.0
+shader_parameter/shake_color_rate = 1.0
+shader_parameter/main_tex = ExtResource("4_ptsox")
+
+[node name="Pablo 2" instance=ExtResource("1_giifa")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, -10.9416, 0)
+script = ExtResource("2_arjoe")
+
+[node name="greeble_173" parent="." index="2"]
+surface_material_override/0 = SubResource("ShaderMaterial_huhg8")
+
+[node name="greeble_001" parent="." index="3"]
+surface_material_override/0 = SubResource("ShaderMaterial_t211y")
+
+[node name="greeble_002" parent="." index="4"]
+surface_material_override/0 = SubResource("ShaderMaterial_t211y")
+
+[node name="greeble_003" parent="." index="5"]
+surface_material_override/0 = SubResource("ShaderMaterial_t211y")
+
+[node name="greeble_004" parent="." index="6"]
+surface_material_override/0 = SubResource("ShaderMaterial_t211y")
+
+[node name="greeble_005" parent="." index="7"]
+surface_material_override/0 = SubResource("ShaderMaterial_t211y")
+
+[node name="greeble_006" parent="." index="8"]
+surface_material_override/0 = SubResource("ShaderMaterial_t211y")
+
+[node name="greeble_007" parent="." index="9"]
+surface_material_override/0 = SubResource("ShaderMaterial_t211y")
+
+[node name="BézierCurve" parent="." index="10"]
+surface_material_override/0 = SubResource("ShaderMaterial_jhu3d")
+
+[node name="zombie" parent="." index="11"]
+surface_material_override/0 = SubResource("ShaderMaterial_61poc")
+
+[node name="Retopo_extras" parent="." index="12"]
+surface_material_override/0 = SubResource("ShaderMaterial_4ijc1")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." index="15"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0321659, 1.72495, 0.110881)
+light_color = Color(0, 0.588393, 0.588393, 1)
+omni_range = 1.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="." index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0253349, 1.72495, 0.110881)
+light_color = Color(0, 0.588393, 0.588393, 1)
+omni_range = 1.0
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="17"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.67333, 0)
+stream = ExtResource("5_1lmsu")
+volume_db = 20.0
+unit_size = 3.0
+autoplay = true

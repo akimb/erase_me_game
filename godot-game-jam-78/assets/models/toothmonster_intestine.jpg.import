@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://kl0ed1vui0dn"
 path.s3tc="res://.godot/imported/toothmonster_intestine.jpg-609e1925ed3d916d84549ce9b051cfe5.s3tc.ctex"
+path.etc2="res://.godot/imported/toothmonster_intestine.jpg-609e1925ed3d916d84549ce9b051cfe5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/toothmonster_intestine.jpg"
-dest_files=["res://.godot/imported/toothmonster_intestine.jpg-609e1925ed3d916d84549ce9b051cfe5.s3tc.ctex"]
+dest_files=["res://.godot/imported/toothmonster_intestine.jpg-609e1925ed3d916d84549ce9b051cfe5.s3tc.ctex", "res://.godot/imported/toothmonster_intestine.jpg-609e1925ed3d916d84549ce9b051cfe5.etc2.ctex"]
 
 [params]
 

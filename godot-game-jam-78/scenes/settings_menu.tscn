@@ -1,0 +1,114 @@
+[gd_scene load_steps=5 format=3 uid="uid://67jnd8m56mpt"]
+
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="1_l6rrn"]
+[ext_resource type="Script" path="res://scripts/settings_menu.gd" id="1_vkhtm"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8p8ej"]
+font = ExtResource("1_l6rrn")
+font_size = 25
+
+[sub_resource type="LabelSettings" id="LabelSettings_mfyds"]
+font = ExtResource("1_l6rrn")
+font_size = 25
+
+[node name="Settings Menu" type="Control"]
+custom_minimum_size = Vector2(600, 512)
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -256.0
+offset_right = 300.0
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vkhtm")
+
+[node name="SFX Slider" type="HSlider" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = -76.0
+offset_right = -44.0
+offset_bottom = -60.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.1
+
+[node name="Mouse Sensitivity Slider" type="HSlider" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 44.0
+offset_top = 36.0
+offset_right = -44.0
+offset_bottom = 52.0
+grow_horizontal = 2
+grow_vertical = 2
+max_value = 1.0
+step = 0.1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -124.0
+offset_right = 20.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "SFX"
+label_settings = SubResource("LabelSettings_8p8ej")
+
+[node name="Label2" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -124.5
+offset_top = -11.5
+offset_right = 124.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+text = "MOUSE SENSITIVITY"
+label_settings = SubResource("LabelSettings_mfyds")
+
+[node name="Button" type="Button" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -127.0
+offset_top = -17.5
+offset_right = 127.0
+offset_bottom = 17.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_l6rrn")
+theme_override_font_sizes/font_size = 30
+text = "RETURN TO MENU"
+
+[connection signal="value_changed" from="SFX Slider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="value_changed" from="Mouse Sensitivity Slider" to="." method="_on_mouse_sensitivity_slider_value_changed"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

@@ -25,3 +25,7 @@ func _on_button_pressed():
 
 func _on_text_edit_text_changed():
 	SoundBus.key_press.play()
+
+
+func _on_text_edit_mouse_exited():
+	text_edit.release_focus()

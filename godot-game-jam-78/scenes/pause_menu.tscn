@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://vxyqfv0yjs65"]
+[gd_scene load_steps=5 format=3 uid="uid://vxyqfv0yjs65"]
 
 [ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_dvri0"]
 [ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="1_l755q"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_w38t8"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_hkya1"]
+font = ExtResource("2_w38t8")
+font_size = 25
 
 [node name="Pause Menu" type="Control"]
 process_mode = 3
@@ -24,7 +28,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.105882, 0.105882, 0.105882, 0)
+color = Color(0.105882, 0.105882, 0.105882, 1)
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 custom_minimum_size = Vector2(300, 200)
@@ -62,24 +66,36 @@ offset_right = 177.0
 offset_bottom = 63.0
 mouse_filter = 2
 
-[node name="Settings" type="Button" parent="."]
-process_mode = 3
+[node name="SFX Slider" type="HSlider" parent="."]
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -97.0
-offset_top = -195.0
-offset_right = 99.0
-offset_bottom = -151.0
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 109.0
+offset_top = -8.0
+offset_right = -115.0
+offset_bottom = 8.0
 grow_horizontal = 2
-grow_vertical = 0
-theme_override_fonts/font = ExtResource("2_w38t8")
-theme_override_font_sizes/font_size = 40
-text = "Settings"
-flat = true
+grow_vertical = 2
+max_value = 1.0
+step = 0.1
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -124.0
+offset_right = 20.0
+offset_bottom = -101.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Volume"
+label_settings = SubResource("LabelSettings_hkya1")
 
 [node name="Resume" type="Button" parent="."]
 process_mode = 3
@@ -131,6 +147,6 @@ offset_top = -1.0
 offset_right = 0.0
 offset_bottom = -1.0
 
-[connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]
+[connection signal="value_changed" from="SFX Slider" to="." method="_on_sfx_slider_value_changed"]
 [connection signal="pressed" from="Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

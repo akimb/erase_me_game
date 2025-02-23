@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://do03phxh78x0u"]
+[gd_scene load_steps=17 format=3 uid="uid://do03phxh78x0u"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6qjif"]
 [ext_resource type="PackedScene" uid="uid://k4x24ga5rch7" path="res://assets/models/desk.glb" id="1_o1vky"]
@@ -8,16 +8,22 @@
 [ext_resource type="PackedScene" uid="uid://ddv32s38nffkr" path="res://scenes/mouse.tscn" id="5_i60qe"]
 [ext_resource type="PackedScene" uid="uid://b5qon5tdcfpe" path="res://scenes/keyboard.tscn" id="6_xmrk6"]
 [ext_resource type="PackedScene" uid="uid://cyeafoym1je7k" path="res://scenes/pc.tscn" id="7_4xxfp"]
+[ext_resource type="PackedScene" uid="uid://bpwepnlpssxo6" path="res://scenes/pablo2.tscn" id="7_n12yh"]
 [ext_resource type="PackedScene" uid="uid://3c0bv7nu2lbs" path="res://scenes/phone.tscn" id="9_nvogb"]
 [ext_resource type="PackedScene" uid="uid://p5r5yq3ejujd" path="res://scenes/sticky_note.tscn" id="10_7kvat"]
-[ext_resource type="PackedScene" uid="uid://5fetekgo4w6u" path="res://scenes/toothmonster.tscn" id="12_yva0h"]
 [ext_resource type="PackedScene" uid="uid://c5m3qoaxoo8ot" path="res://scenes/light_switch.tscn" id="13_6buju"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tnpy3"]
 size = Vector2(100, 100)
 
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_8l45i"]
+
+[sub_resource type="Sky" id="Sky_s8v8f"]
+sky_material = SubResource("PanoramaSkyMaterial_8l45i")
+
 [sub_resource type="Environment" id="Environment_vxpw1"]
-background_mode = 2
+background_mode = 1
+sky = SubResource("Sky_s8v8f")
 
 [node name="Main" type="Node3D" node_paths=PackedStringArray("monitor", "pc", "phone", "desk_camera")]
 script = ExtResource("1_6qjif")
@@ -47,9 +53,8 @@ desk_camera = NodePath("../Desk Camera")
 [node name="phone" parent="." instance=ExtResource("9_nvogb")]
 transform = Transform3D(0.0384466, 0, 0.0319666, 0, 0.05, 0, -0.0319666, 0, 0.0384466, -2.12852, 10.118, 0.917303)
 
-[node name="toothmonster" parent="." node_paths=PackedStringArray("light_switch", "monitor", "phone", "pc", "outside_waypoints_parent", "inside_waypoints_parent", "player_camera") instance=ExtResource("12_yva0h")]
-process_mode = 4
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -35.5944, 8.0152, 18.7821)
+[node name="Pablo 2" parent="." node_paths=PackedStringArray("light_switch", "monitor", "phone", "pc", "outside_waypoints_parent", "inside_waypoints_parent", "player_camera") instance=ExtResource("7_n12yh")]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0.994421, -10.9416, 21.4763)
 light_switch = NodePath("../light_switch")
 monitor = NodePath("../monitor")
 phone = NodePath("../phone")
@@ -57,10 +62,6 @@ pc = NodePath("../pc")
 outside_waypoints_parent = NodePath("../Outside Nav Nodes")
 inside_waypoints_parent = NodePath("../Inside Nav Nodes")
 player_camera = NodePath("../Desk Camera")
-
-[node name="Camera3D" type="Camera3D" parent="toothmonster"]
-transform = Transform3D(-4.09782e-08, 0, 1, 0, 1, 0, -1, 0, -4.09782e-08, -0.979279, 4.08759, -0.00338364)
-visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.659913, 6.60796)
@@ -70,7 +71,7 @@ mesh = SubResource("PlaneMesh_tnpy3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.91221, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="desk"]
-transform = Transform3D(1, 0, 0, 0, -0.693402, -0.720551, 0, 0.720551, -0.693402, 0, -7.31067, 17.7142)
+transform = Transform3D(1, 0, 0, 0, -0.471504, 0.881864, 0, -0.881864, -0.471504, 0, 8.41, 23.1349)
 light_color = Color(1, 0, 0, 1)
 spot_range = 30.1901
 spot_angle = 51.1142
@@ -93,12 +94,10 @@ transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.20474, 10.1038,
 transform = Transform3D(0.19924, -0.00131569, 0.0173648, 0.0173648, 0.0300768, -0.196962, -0.00131569, 0.197721, 0.0300768, -0.570201, 10.5289, 0.286928)
 
 [node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 11.3807, 44.7293)
-visible = false
+transform = Transform3D(0.0568039, -0.991877, 0.113815, 0, 0.113999, 0.993481, -0.998385, -0.0564336, 0.00647558, -5.69755, 55.5975, 18.5579)
 fov = 90.0
 
 [node name="Outside Nav Nodes" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
 [node name="OutsideNode1" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2265, 0, 45.0533)
@@ -125,7 +124,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1342, 0, 44.3251)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114649, 0, 44.3251)
 
 [node name="Inside Nav Nodes" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
 [node name="InsideNode1" type="Node3D" parent="Inside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.45)

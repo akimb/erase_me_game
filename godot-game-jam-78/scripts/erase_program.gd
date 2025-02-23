@@ -17,7 +17,7 @@ func _ready():
 	progress_bar = get_parent().get_parent().get_node("ProgressBar")
 	selected_program = program_list.pick_random()
 	
-	if rng.randf() < 0.75:
+	if rng.randf() < 0.5:
 		selected_program = scramble_text(selected_program)
 	
 	program.text = "Run [" + selected_program + "]"

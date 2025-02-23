@@ -21,6 +21,7 @@ func _process(_delta):
 
 func interact():
 	if selected_object == self:
+		SoundBus.pc_button.play()
 		var ui = monitor.computer_access.computer_ui
 		monitor.computer_access.visible = !monitor.computer_access.visible
 		monitor.computer_light.visible = !monitor.computer_light.visible

@@ -24,6 +24,9 @@ signal call_ended
 @onready var scream = $Scream
 @onready var jumpscare_scream = $"Jumpscare Scream"
 @onready var menu_music = $"Menu Music"
+@onready var goofy_ahh_sound = $"Goofy Ahh Sound"
+@onready var parasite_goofy = $"Parasite Goofy"
+@onready var pc_button = $"PC Button"
 
 
 func _on_phone_call_1_finished():

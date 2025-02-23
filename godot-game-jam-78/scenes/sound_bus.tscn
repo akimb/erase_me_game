@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bgxec2merl3nd"]
+[gd_scene load_steps=28 format=3 uid="uid://bgxec2merl3nd"]
 
 [ext_resource type="Script" path="res://scripts/sound_bus.gd" id="1_mhstk"]
 [ext_resource type="AudioStream" uid="uid://bjmm70duroctm" path="res://sounds/busy_signal.ogg" id="2_hoqul"]
@@ -23,6 +23,9 @@
 [ext_resource type="AudioStream" uid="uid://465an8gfuic2" path="res://sounds/scream.ogg" id="21_16b16"]
 [ext_resource type="AudioStream" uid="uid://b5m7djb2qrnko" path="res://sounds/shortscream.ogg" id="22_vu03b"]
 [ext_resource type="AudioStream" uid="uid://bjka51mc7tgyp" path="res://sounds/erasemetitle.ogg" id="23_1k7q0"]
+[ext_resource type="AudioStream" uid="uid://dj7eluosiq5c0" path="res://sounds/goofy2.ogg" id="24_jym4s"]
+[ext_resource type="AudioStream" uid="uid://q83gxc1ts1e8" path="res://sounds/goofy(loop).ogg" id="25_8msp0"]
+[ext_resource type="AudioStream" uid="uid://u8pph4fehf21" path="res://sounds/computer button.ogg" id="26_7k2c2"]
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5haf3"]
 playback_mode = 1
@@ -121,6 +124,18 @@ volume_db = 10.0
 [node name="Menu Music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("23_1k7q0")
 volume_db = -5.0
+
+[node name="Goofy Ahh Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("24_jym4s")
+volume_db = -5.0
+
+[node name="Parasite Goofy" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("25_8msp0")
+volume_db = -5.0
+
+[node name="PC Button" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("26_7k2c2")
+volume_db = -10.0
 
 [connection signal="finished" from="Phone Call 1" to="." method="_on_phone_call_1_finished"]
 [connection signal="finished" from="Phone Call 2" to="." method="_on_phone_call_2_finished"]

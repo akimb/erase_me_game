@@ -13,6 +13,7 @@ config_version=5
 config/name="godot game jam 78"
 run/main_scene="res://scenes/title_screen.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/image="res://ui/splash_screen.png"
 config/icon="res://icon.svg"
 
 [autoload]
@@ -91,4 +92,5 @@ jump={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 textures/custom_image=""

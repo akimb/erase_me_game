@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dli6iwqisedqy"
 path.s3tc="res://.godot/imported/toothmonster_monster teeth.jpg-6b071eed809ae43518c23d2901b4f1e9.s3tc.ctex"
+path.etc2="res://.godot/imported/toothmonster_monster teeth.jpg-6b071eed809ae43518c23d2901b4f1e9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://assets/models/toothmonster_monster teeth.jpg"
-dest_files=["res://.godot/imported/toothmonster_monster teeth.jpg-6b071eed809ae43518c23d2901b4f1e9.s3tc.ctex"]
+dest_files=["res://.godot/imported/toothmonster_monster teeth.jpg-6b071eed809ae43518c23d2901b4f1e9.s3tc.ctex", "res://.godot/imported/toothmonster_monster teeth.jpg-6b071eed809ae43518c23d2901b4f1e9.etc2.ctex"]
 
 [params]
 
