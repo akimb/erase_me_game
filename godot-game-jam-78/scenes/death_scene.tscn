@@ -1,0 +1,61 @@
+[gd_scene load_steps=4 format=3 uid="uid://bueki3r64xx5y"]
+
+[ext_resource type="Script" path="res://scripts/death_scene.gd" id="1_00os3"]
+[ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="1_28jf7"]
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_wgsyn"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_00os3")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0.666667, 1)
+
+[node name="Shader Overlay" parent="." instance=ExtResource("1_28jf7")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(950, 330)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -475.0
+offset_top = -165.0
+offset_right = 475.0
+offset_bottom = 165.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_wgsyn")
+theme_override_font_sizes/normal_font_size = 35
+bbcode_enabled = true
+text = "
+[color=white]An error has occured. To continue:
+
+Press Enter to return to EraserOS, or
+
+Press ESC to exit your computer.If you do this, you will lose any unsaved information in all open applications.
+
+Error: 0E : 016F : BFF9B3D4"

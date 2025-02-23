@@ -41,6 +41,9 @@ func fail_sequence():
 	tween.tween_property(flappy_manager.fail, "visible", true, 0.2)
 	tween.tween_property(flappy_manager.fail, "visible", false, 0.2)
 	tween.tween_property(flappy_manager.fail, "visible", true, 0.2)
+	await tween.finished
+	get_parent().get_parent().get_parent().get_parent().remove_child(self)
+	get_parent().get_parent().get_parent().get_parent().queue_free()
 	call_deferred("disable_game")
 
 func disable_game():

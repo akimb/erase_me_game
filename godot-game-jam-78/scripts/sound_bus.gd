@@ -19,7 +19,11 @@ signal call_ended
 @onready var erase_failed = $"Erase Failed"
 @onready var light_off = $"Light Off"
 @onready var light_on = $"Light On"
-
+@onready var bsod = $BSOD
+@onready var startup_sound = $"Startup Sound"
+@onready var scream = $Scream
+@onready var jumpscare_scream = $"Jumpscare Scream"
+@onready var menu_music = $"Menu Music"
 
 
 func _on_phone_call_1_finished():

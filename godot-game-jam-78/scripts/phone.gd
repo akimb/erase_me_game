@@ -15,8 +15,7 @@ func _ready():
 	super()
 	caller_id.visible = false
 	incoming_call.visible = false
-	#calls = [SoundBus.phone_call_1, SoundBus.phone_call_2]
-	calls = [SoundBus.phone_call_2]
+	calls = [SoundBus.phone_call_1, SoundBus.phone_call_2]
 	play_ringtone()
 	continue_story = true
 
@@ -32,13 +31,13 @@ func interact():
 		elif interacted and continue_story:
 			caller_id.visible = true
 			incoming_call.visible = false
-			SoundBus.phone_ring.playing = false
+			SoundBus.phone_ring.stop()
 			continue_story = false
+
 			if next_call < calls.size():
 				calls[next_call].play()
 				await calls[next_call].finished
 			hang_up_phone()
-			next_call += 1
 			
 		else:
 			for i in calls:
@@ -54,11 +53,16 @@ func interact():
 func play_ringtone():
 	incoming_call.visible = true
 	phone_light.light_color = Color(1, 1, 0)
-	SoundBus.phone_ring.playing = true
+	SoundBus.phone_ring.play()
 	
 func hang_up_phone():
 	incoming_call.visible = false
 	caller_id.visible = false
 	phone_light.light_color = Color(1, 0, 0)
+	SoundBus.phone_ring.stop()
 	reset_object()
-	
+
+func set_continue_story():
+	play_ringtone()
+	next_call += 1
+	continue_story = true

@@ -1,0 +1,73 @@
+[gd_scene load_steps=4 format=3 uid="uid://3uv0858gyf84"]
+
+[ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="1_5vdxt"]
+[ext_resource type="Script" path="res://scripts/win_screen.gd" id="1_5yos0"]
+[ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="1_n1704"]
+
+[node name="Win Screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5yos0")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.105882, 0.105882, 0.105882, 1)
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+custom_minimum_size = Vector2(1000, 540)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("1_n1704")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "> INITIALIZING SYSTEM CHECK...
+> SCANNING FILES... ██████████ 100%
+> VALIDATING USER INPUT... SUCCESS
+> EXECUTING FINAL SEQUENCE...
+
+> CONGRATULATIONS.
+> ALL TARGET DATA HAS BEEN SUCCESSFULLY ERASED.
+
+> SYSTEM SELF-PURGE IN PROGRESS... ██████████ 100%
+> DISCONNECTING FROM SECURE NETWORK...
+> CLOSING CONNECTION...
+
+> YOU WIN.
+
+> PRESS ANY KEY TO EXIT."
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="Shader Overlay" parent="." instance=ExtResource("1_5vdxt")]
+layout_mode = 1
+anchors_preset = 15
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

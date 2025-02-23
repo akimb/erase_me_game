@@ -8,6 +8,7 @@ signal bootup_finished
 @onready var bootup_sequence = $"Bootup Sequence"
 @onready var user_ui = $"User UI"
 @onready var rich_text_label = $"Bootup Sequence/RichTextLabel"
+@onready var mr__erase_app = $"User UI/Mr_ Erase App"
 
 var mouse_cursor : CompressedTexture2D = preload("res://ui/mouse_icon.png")
 var line_delay : float = 0.05
@@ -23,6 +24,8 @@ func _input(_event):
 		SoundBus.mouse_click.play()
 	
 	if Input.is_action_just_pressed("enter") and boot_up == false:
+		SoundBus.startup_sound.play()
+		boot_up = true
 		bootup_sequence.visible = false
 		user_ui.visible = true
 		user_ui.process_mode = Node.PROCESS_MODE_INHERIT

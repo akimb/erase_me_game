@@ -227,6 +227,32 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0627451, 0.0627451, 0.0627451, 1)
 
+[node name="RichTextLabel" type="RichTextLabel" parent="CREDITS"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 76.0
+offset_right = -20.0
+offset_bottom = -68.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/normal_font = ExtResource("2_86mbq")
+theme_override_font_sizes/normal_font_size = 30
+bbcode_enabled = true
+text = "[color=cyan]PROGRAMMING[/color]: A_KIMB0
+
+[color=cyan]MUSIC AND SOUND DESIGN[/color]: BLEE628
+
+[color=cyan]MODELING[/color]: OSCAR BAECHLER
+
+[color=cyan]SPECIAL THANKS TO[/color]: 
+	ROXIEBLEH
+	BANSHEERUBBER
+
+[color=hotpink]AND TO RACHAEL, WHO PUT UP WITH ME DOING A GAME JAM FOR A WHOLE WEEK"
+
 [node name="Return to Menu" type="Button" parent="."]
 visible = false
 layout_mode = 1
@@ -261,6 +287,7 @@ grow_horizontal = 1
 grow_vertical = 1
 
 [connection signal="text_changed" from="Label" to="." method="_on_label_text_changed"]
+[connection signal="text_submitted" from="Label" to="." method="_on_label_text_submitted"]
 [connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="Controls" to="." method="_on_controls_pressed"]
 [connection signal="pressed" from="Settings" to="." method="_on_settings_pressed"]

@@ -4,9 +4,9 @@
 
 [resource]
 shader = ExtResource("1_3kbns")
-shader_parameter/resolution = Vector2(800, 640)
-shader_parameter/scan_line_amount = 1.0
-shader_parameter/warp_amount = 0.05
+shader_parameter/resolution = Vector2(1152, 640)
+shader_parameter/scan_line_amount = 0.0
+shader_parameter/warp_amount = 0.0
 shader_parameter/noise_amount = 0.2
 shader_parameter/interference_amount = 0.2
 shader_parameter/grille_amount = 0.1

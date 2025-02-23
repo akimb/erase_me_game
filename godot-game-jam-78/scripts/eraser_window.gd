@@ -4,6 +4,9 @@ class_name MrErase
 
 @onready var animation_player = $AnimationPlayer
 @onready var progress_bar = $ProgressBar
+@onready var v_box_container = $VBoxContainer
+
+var erase_program : PackedScene = preload("res://scenes/erase_program.tscn")
 
 var dragging_distance
 var dir
@@ -13,8 +16,14 @@ var mouse_in : bool = false
 
 func _ready():
 	animation_player.play("spin_hourglass")
+	ProgressSignal.increase_progress.connect(_change_progress_value)
 	progress_bar.value = 0.0
-	
+
+func _process(_delta):
+	if v_box_container.get_child_count() < 5:
+		var program = erase_program.instantiate()
+		v_box_container.add_child(program)
+
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.pressed and mouse_in:
@@ -45,3 +54,7 @@ func _on_toolbar_mouse_exited():
 
 func _on_button_pressed():
 	self.visible = false
+
+func _change_progress_value(score : float):
+	if progress_bar.value >= 0.0:
+		progress_bar.value += score

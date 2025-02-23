@@ -1,5 +1,7 @@
 extends Control
 
+class_name EraseProgram
+
 @onready var program = $Program
 @onready var trash = $Trash
 
@@ -64,6 +66,8 @@ func _on_program_pressed():
 		var tween = get_tree().create_tween()
 		tween.tween_property(jumpscare, "visible", true, 0.5)
 		tween.tween_property(jumpscare, "visible", false, 0.5)
+		SoundBus.jumpscare_scream.play()
+		ProgressSignal.increase_progress.emit(-0.1)
 		
 		print(progress_bar.value)
 	get_parent().remove_child(self)

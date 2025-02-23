@@ -11,14 +11,16 @@ var dir
 var dragging
 var offset = Vector2.ZERO
 var mouse_in : bool = false
+var can_play : bool = true
 
 func _ready():
 	pause_screen.visible = true
 	play_button.visible = true
 
 func _input(event):
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("jump") and can_play:
 		flappy_frog.process_mode = Node.PROCESS_MODE_INHERIT
+		can_play = false
 	if event is InputEventMouseButton:
 		if event.pressed and mouse_in:
 			self.get_parent().move_child(self, self.get_parent().get_child_count() - 2)

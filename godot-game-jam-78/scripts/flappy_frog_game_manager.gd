@@ -15,7 +15,7 @@ var button_pressed : bool = false
 var pipe : PackedScene = preload("res://scenes/pipe.tscn")
 
 func _ready():
-	process_mode = Node.PROCESS_MODE_DISABLED
+	self.process_mode = Node.PROCESS_MODE_DISABLED
 	erase_success.connect(_full_progress_bar)
 	panel.visible = false
 	success.visible = false
@@ -33,7 +33,13 @@ func check_progress():
 		erase_success.emit()
 
 func _full_progress_bar():
+	#set_process_input(false)
+	set_process_input(false)
+	set_process_unhandled_input(false)
+	set_process_unhandled_key_input(false)
+	set_physics_process(false)
 	SoundBus.erase_successful.play()
+	ProgressSignal.increase_progress.emit(0.1)
 	panel.visible = true
 	success.visible = true
 	panel.get_parent().move_child(panel, panel.get_parent().get_child_count() - 1)
@@ -45,9 +51,12 @@ func _full_progress_bar():
 	tween.tween_property(success, "visible", false, 0.2)
 	tween.tween_property(success, "visible", true, 0.2)
 	call_deferred("disable_game")
-
+	await tween.finished
+	get_parent().get_parent().get_parent().remove_child(self)
+	get_parent().get_parent().get_parent().queue_free()
+	
 func disable_game():
-	process_mode = Node.PROCESS_MODE_DISABLED
+	self.process_mode = Node.PROCESS_MODE_DISABLED
 
 func set_instructions():
 	begin.visible = true

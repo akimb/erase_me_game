@@ -10,7 +10,7 @@ var main_scene : PackedScene = preload("res://scenes/main.tscn")
 @onready var return_to_menu = $"Return to Menu"
 
 func _ready():
-	SoundBus.ambience.play()
+	SoundBus.menu_music.play()
 	label.release_focus()
 	prepare_menu()
 
@@ -50,3 +50,8 @@ func prepare_menu():
 	controls.visible = false
 	settings.visible = false
 	credits.visible = false
+
+
+func _on_label_text_submitted(new_text):
+	if new_text == "a_kimb0":
+		print("add easter egg here")

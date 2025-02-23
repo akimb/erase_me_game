@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://do03phxh78x0u"]
+[gd_scene load_steps=15 format=3 uid="uid://do03phxh78x0u"]
 
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6qjif"]
 [ext_resource type="PackedScene" uid="uid://k4x24ga5rch7" path="res://assets/models/desk.glb" id="1_o1vky"]
@@ -16,16 +16,14 @@
 [sub_resource type="PlaneMesh" id="PlaneMesh_tnpy3"]
 size = Vector2(100, 100)
 
-[sub_resource type="Sky" id="Sky_lwn4g"]
-
-[sub_resource type="Environment" id="Environment_njxmg"]
+[sub_resource type="Environment" id="Environment_vxpw1"]
 background_mode = 2
-sky = SubResource("Sky_lwn4g")
 
-[node name="Main" type="Node3D" node_paths=PackedStringArray("monitor", "pc", "desk_camera")]
+[node name="Main" type="Node3D" node_paths=PackedStringArray("monitor", "pc", "phone", "desk_camera")]
 script = ExtResource("1_6qjif")
 monitor = NodePath("monitor")
 pc = NodePath("pc")
+phone = NodePath("phone")
 desk_camera = NodePath("Desk Camera")
 
 [node name="Desk Camera" parent="." node_paths=PackedStringArray("monitor", "pc", "phone") instance=ExtResource("4_pf53h")]
@@ -49,13 +47,20 @@ desk_camera = NodePath("../Desk Camera")
 [node name="phone" parent="." instance=ExtResource("9_nvogb")]
 transform = Transform3D(0.0384466, 0, 0.0319666, 0, 0.05, 0, -0.0319666, 0, 0.0384466, -2.12852, 10.118, 0.917303)
 
-[node name="toothmonster" parent="." node_paths=PackedStringArray("light_switch", "monitor", "phone", "pc", "outside_waypoints_parent") instance=ExtResource("12_yva0h")]
-transform = Transform3D(-0.0510634, 0, -0.998695, 0, 1, 0, 0.998695, 0, -0.0510634, -0.707036, 8.0152, 35.1039)
+[node name="toothmonster" parent="." node_paths=PackedStringArray("light_switch", "monitor", "phone", "pc", "outside_waypoints_parent", "inside_waypoints_parent", "player_camera") instance=ExtResource("12_yva0h")]
+process_mode = 4
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -35.5944, 8.0152, 18.7821)
 light_switch = NodePath("../light_switch")
 monitor = NodePath("../monitor")
 phone = NodePath("../phone")
 pc = NodePath("../pc")
 outside_waypoints_parent = NodePath("../Outside Nav Nodes")
+inside_waypoints_parent = NodePath("../Inside Nav Nodes")
+player_camera = NodePath("../Desk Camera")
+
+[node name="Camera3D" type="Camera3D" parent="toothmonster"]
+transform = Transform3D(-4.09782e-08, 0, 1, 0, 1, 0, -1, 0, -4.09782e-08, -0.979279, 4.08759, -0.00338364)
+visible = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.659913, 6.60796)
@@ -65,13 +70,13 @@ mesh = SubResource("PlaneMesh_tnpy3")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9.91221, 0)
 
 [node name="SpotLight3D" type="SpotLight3D" parent="desk"]
-transform = Transform3D(1, 0, 0, 0, -0.707107, 0.707107, 0, -0.707107, -0.707107, 0, 8.72174, 22.3221)
+transform = Transform3D(1, 0, 0, 0, -0.693402, -0.720551, 0, 0.720551, -0.693402, 0, -7.31067, 17.7142)
 light_color = Color(1, 0, 0, 1)
 spot_range = 30.1901
 spot_angle = 51.1142
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_njxmg")
+environment = SubResource("Environment_vxpw1")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.99866, -0.0517433, 0, 0.0517433, 0.99866, 0, 0, 0, 1, -2.15383, 13.3582, -1.97804)
@@ -93,34 +98,49 @@ visible = false
 fov = 90.0
 
 [node name="Outside Nav Nodes" type="Node3D" parent="."]
-visible = false
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Node1" type="Node3D" parent="Outside Nav Nodes"]
+[node name="OutsideNode1" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.2265, 0, 45.0533)
 
-[node name="Node2" type="Node3D" parent="Outside Nav Nodes"]
+[node name="OutsideNode2" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.593, 0, 17.7469)
 
-[node name="Node3" type="Node3D" parent="Outside Nav Nodes"]
+[node name="OutsideNode3" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -38.593, 0, -15.2028)
 
-[node name="Node4" type="Node3D" parent="Outside Nav Nodes"]
+[node name="OutsideNode4" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -15.2028)
 
-[node name="Node5" type="Node3D" parent="Outside Nav Nodes"]
+[node name="OutsideNode5" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1342, 0, -15.2028)
 
-[node name="Node6" type="Node3D" parent="Outside Nav Nodes"]
+[node name="OutsideNode6" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1342, 0, 13.0138)
 
-[node name="Node7" type="Node3D" parent="Outside Nav Nodes"]
+[node name="OutsideNode7" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.1342, 0, 44.3251)
 
-[node name="Node8" type="Node3D" parent="Outside Nav Nodes"]
+[node name="OutsideNode8" type="Node3D" parent="Outside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.114649, 0, 44.3251)
 
-[node name="Doorway Node" type="Node3D" parent="."]
-transform = Transform3D(-0.0510634, 0, -0.998695, 0, 1, 0, 0.998695, 0, -0.0510634, 0.00466743, 0, 28.4693)
+[node name="Inside Nav Nodes" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 12, 0)
 
-[node name="Pablo Spawn Point" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.0545, -3.8147e-06, 44.2875)
+[node name="InsideNode1" type="Node3D" parent="Inside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 25.45)
+
+[node name="InsideNode2" type="Node3D" parent="Inside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9275, 0, 25.45)
+
+[node name="InsideNode3" type="Node3D" parent="Inside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.9275, 0, 8.58461)
+
+[node name="InsideNode4" type="Node3D" parent="Inside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.05007, 0, 8.58461)
+
+[node name="InsideNode5" type="Node3D" parent="Inside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.618, 0, 8.58461)
+
+[node name="InsideNode6" type="Node3D" parent="Inside Nav Nodes"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.618, 0, 25.2758)
