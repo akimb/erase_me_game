@@ -1,11 +1,11 @@
 [gd_scene load_steps=13 format=3 uid="uid://dp8wv6cr46taw"]
 
-[ext_resource type="Script" path="res://scripts/computer_access.gd" id="1_t87eq"]
+[ext_resource type="Script" uid="uid://b2hftuidlh2v" path="res://scripts/computer_access.gd" id="1_t87eq"]
 [ext_resource type="QuadMesh" uid="uid://dss48niyphoip" path="res://resources/blue_screen.tres" id="2_c6b32"]
 [ext_resource type="PackedScene" uid="uid://ylcvcfgqc422" path="res://scenes/computer_ui.tscn" id="3_bguj6"]
 [ext_resource type="Texture2D" uid="uid://d4jnxiawjn0yb" path="res://ui/jumpscare_image2.png" id="3_nk4f8"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="4_vs2sn"]
-[ext_resource type="Shader" path="res://assets/shaders/desk_camera_glitch.gdshader" id="5_gds86"]
+[ext_resource type="Shader" uid="uid://yemsbuyld8u7" path="res://assets/shaders/desk_camera_glitch.gdshader" id="5_gds86"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_43knt"]
 viewport_path = NodePath("SubViewport")

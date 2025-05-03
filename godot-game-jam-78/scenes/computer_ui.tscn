@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://ylcvcfgqc422"]
 
-[ext_resource type="Script" path="res://scripts/computer_ui.gd" id="1_d5htc"]
+[ext_resource type="Script" uid="uid://c1kibj56efcyd" path="res://scripts/computer_ui.gd" id="1_d5htc"]
 [ext_resource type="Theme" uid="uid://c85is4ndjcbp0" path="res://resources/default_theme.tres" id="1_r8al6"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_3scss"]
 [ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="2_5titc"]
@@ -228,7 +228,17 @@ offset_top = 125.0
 offset_right = 73.0
 offset_bottom = 189.0
 
+[node name="Running Programs" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="Shader Overlay" parent="." instance=ExtResource("2_5titc")]
+visible = false
 layout_mode = 0
 anchors_preset = 0
 anchor_left = 0.0

@@ -50,25 +50,29 @@ func _on_trash_pressed():
 
 
 func _on_program_pressed():
+	var running_programs = get_tree().get_root().get_node("Main").get_node("monitor").get_node("Computer Access").get_node("SubViewport").get_node("Computer UI").get_node("Running Programs")
 	if (selected_program == program_list[0]) or (selected_program == program_list[1]):
 		if selected_program == program_list[0]:
 			var flappy = flappy_frog_exe.instantiate()
-			get_tree().get_root().get_node("Main").get_node("monitor").get_node("Computer Access").get_node("SubViewport").get_node("Computer UI").add_child(flappy)
+			running_programs.add_child(flappy)
 			flappy.get_parent().move_child(flappy, flappy.get_parent().get_child_count() - 2)
 			#print(progress_bar.value)
 		if selected_program == program_list[1]:
 			var typing = typing_wizard_exe.instantiate()
-			get_tree().get_root().get_node("Main").get_node("monitor").get_node("Computer Access").get_node("SubViewport").get_node("Computer UI").add_child(typing)
+			running_programs.add_child(typing)
 			typing.get_parent().move_child(typing, typing.get_parent().get_child_count() - 2)
 			#print(progress_bar.value)
 	else:
 		var jumpscare = get_tree().get_root().get_node("Main").get_node("monitor").get_node("Computer Access").get_node("Jumpscare Image")
-		var tween = get_tree().create_tween()
-		tween.tween_property(jumpscare, "visible", true, 0.5)
-		tween.tween_property(jumpscare, "visible", false, 0.5)
+
+		if is_instance_valid(jumpscare):
+			var tween = get_tree().create_tween()
+			tween.tween_property(jumpscare, "visible", true, 0.5)
+			tween.tween_property(jumpscare, "visible", false, 0.5)
+		#tween.tween_callback(Callable(tween, "queue_free"))
 		SoundBus.jumpscare_scream.play()
 		ProgressSignal.increase_progress.emit(-0.1)
 		
-		print(progress_bar.value)
+		#print(progress_bar.value)
 	get_parent().remove_child(self)
 	self.queue_free()

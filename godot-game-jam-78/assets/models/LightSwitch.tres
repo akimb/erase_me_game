@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dfyk0pbkelp3o"]
+
+[ext_resource type="Texture2D" uid="uid://cevqky6b3vgcr" path="res://assets/models/xury_light_switch_LightSwitch.png" id="1_1w5k7"]
+
+[resource]
+resource_name = "LightSwitch"
+cull_mode = 2
+shading_mode = 0
+albedo_texture = ExtResource("1_1w5k7")
+texture_filter = 2

@@ -1,6 +1,6 @@
-[gd_scene load_steps=17 format=3 uid="uid://do03phxh78x0u"]
+[gd_scene load_steps=19 format=3 uid="uid://do03phxh78x0u"]
 
-[ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_6qjif"]
+[ext_resource type="Script" uid="uid://yf2rxyslkpyg" path="res://scripts/game_manager.gd" id="1_6qjif"]
 [ext_resource type="PackedScene" uid="uid://k4x24ga5rch7" path="res://assets/models/desk.glb" id="1_o1vky"]
 [ext_resource type="Texture2D" uid="uid://cib0l0awsapow" path="res://assets/models/hang in there cat.jpg" id="4_0dtf6"]
 [ext_resource type="PackedScene" uid="uid://ddemt1dxx38vp" path="res://scenes/monitor.tscn" id="4_8ihv2"]
@@ -12,6 +12,8 @@
 [ext_resource type="PackedScene" uid="uid://3c0bv7nu2lbs" path="res://scenes/phone.tscn" id="9_nvogb"]
 [ext_resource type="PackedScene" uid="uid://p5r5yq3ejujd" path="res://scenes/sticky_note.tscn" id="10_7kvat"]
 [ext_resource type="PackedScene" uid="uid://c5m3qoaxoo8ot" path="res://scenes/light_switch.tscn" id="13_6buju"]
+[ext_resource type="PackedScene" uid="uid://vyoysahq0i2n" path="res://assets/models/desk_plant.glb" id="13_trceg"]
+[ext_resource type="PackedScene" uid="uid://crhmabx1tvhjp" path="res://assets/models/floor_plant.glb" id="14_a8y0u"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_tnpy3"]
 size = Vector2(100, 100)
@@ -42,13 +44,14 @@ phone = NodePath("../phone")
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.2, 10.1178, -0.215821)
 desk_camera = NodePath("../Desk Camera")
 
-[node name="light_switch" parent="." instance=ExtResource("13_6buju")]
-transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, -3.89111, 11.2296, -1.93595)
-
 [node name="pc" parent="." node_paths=PackedStringArray("monitor", "desk_camera") instance=ExtResource("7_4xxfp")]
 transform = Transform3D(0.025, 0, 0, 0, 0.025, 0, 0, 0, 0.025, 0.227655, 9.96062, -0.126571)
 monitor = NodePath("../monitor")
 desk_camera = NodePath("../Desk Camera")
+
+[node name="light_switch" parent="." node_paths=PackedStringArray("red_light") instance=ExtResource("13_6buju")]
+transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, -3.891, 11.23, -1.936)
+red_light = NodePath("../desk/SpotLight3D")
 
 [node name="phone" parent="." instance=ExtResource("9_nvogb")]
 transform = Transform3D(0.0384466, 0, 0.0319666, 0, 0.05, 0, -0.0319666, 0, 0.0384466, -2.12852, 10.118, 0.917303)
@@ -142,3 +145,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.618, 0, 8.58461)
 
 [node name="InsideNode6" type="Node3D" parent="Inside Nav Nodes"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.618, 0, 25.2758)
+
+[node name="desk_plant" parent="." instance=ExtResource("13_trceg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96852, 10.3719, -0.795156)
+
+[node name="floor_plant" parent="." instance=ExtResource("14_a8y0u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.29894, 0.869869, 24.2378)
+
+[node name="Alive Plant" parent="floor_plant" index="0"]
+visible = false
+
+[node name="Dead Plant" parent="floor_plant" index="1"]
+transform = Transform3D(-1.25243, -1.89112e-07, 0.825481, 2.26494e-07, -1.5, 0, 0.825481, 1.24644e-07, 1.25243, 2.04502, -0.234951, 2.61813)
+
+[editable path="desk_plant"]
+[editable path="floor_plant"]

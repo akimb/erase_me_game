@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://1fsjaieb1emb"]
 
 [ext_resource type="Texture2D" uid="uid://8l4h2yd0m56u" path="res://ui/tiles/tile_0122.png" id="1_2qlyu"]
-[ext_resource type="Script" path="res://scripts/desk_camera.gd" id="1_i00jy"]
-[ext_resource type="Shader" path="res://assets/shaders/playshader.gdshader" id="3_r5pdp"]
+[ext_resource type="Script" uid="uid://bemp4jicw7olg" path="res://scripts/desk_camera.gd" id="1_i00jy"]
+[ext_resource type="Shader" uid="uid://bn6tqo1dtpxg7" path="res://assets/shaders/playshader.gdshader" id="3_r5pdp"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="4_rvetp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yx3m8"]
@@ -24,7 +24,6 @@ font_size = 25
 radius = 9.57974
 
 [node name="Desk Camera" type="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.45339, 2.84772)
 script = ExtResource("1_i00jy")
 
 [node name="Pointer" type="RayCast3D" parent="."]

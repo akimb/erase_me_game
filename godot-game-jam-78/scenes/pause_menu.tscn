@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://vxyqfv0yjs65"]
 
-[ext_resource type="Script" path="res://scripts/pause_menu.gd" id="1_dvri0"]
+[ext_resource type="Script" uid="uid://vgke2l3w0vx1" path="res://scripts/pause_menu.gd" id="1_dvri0"]
 [ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="1_l755q"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_w38t8"]
 

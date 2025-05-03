@@ -39,6 +39,6 @@ func display_new_line():
 func _on_timer_timeout():
 	display_new_line()
 
-func _input(event):
+func _input(_event):
 	if Input.is_anything_pressed() and ended_lines:
 		get_tree().quit()

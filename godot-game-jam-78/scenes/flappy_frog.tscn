@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://curl3mkeiojqa"]
 
-[ext_resource type="Script" path="res://scripts/flappy_frog_character.gd" id="1_mi33r"]
-[ext_resource type="Script" path="res://scripts/flappy_frog_game_manager.gd" id="1_siyu7"]
+[ext_resource type="Script" uid="uid://d2bcagvunf335" path="res://scripts/flappy_frog_character.gd" id="1_mi33r"]
+[ext_resource type="Script" uid="uid://c6equ7hfwv2pt" path="res://scripts/flappy_frog_game_manager.gd" id="1_siyu7"]
 [ext_resource type="Texture2D" uid="uid://cwg7ofyypifkp" path="res://assets/models/Idle (32x32).png" id="2_dx4q7"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="4_2syv1"]
 
@@ -91,8 +91,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p04ks"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_86vcr"]
+radius = 8.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gildc"]
 size = Vector2(294, 21)

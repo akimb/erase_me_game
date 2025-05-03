@@ -1,8 +1,8 @@
 [gd_scene load_steps=13 format=3 uid="uid://5fetekgo4w6u"]
 
 [ext_resource type="PackedScene" uid="uid://dq8cw8t5c6qdq" path="res://assets/models/toothmonster.glb" id="1_ldhhj"]
-[ext_resource type="Shader" path="res://assets/shaders/glitch_shader.gdshader" id="2_h48tf"]
-[ext_resource type="Script" path="res://scripts/toothmonster.gd" id="2_m5451"]
+[ext_resource type="Shader" uid="uid://6fevkxoopttj" path="res://assets/shaders/glitch_shader.gdshader" id="2_h48tf"]
+[ext_resource type="Script" uid="uid://b051esjvsewlu" path="res://scripts/toothmonster.gd" id="2_m5451"]
 [ext_resource type="Texture2D" uid="uid://b6kjjlcixke53" path="res://assets/models/toothmonster_horror eyes.jpg" id="3_dv28u"]
 [ext_resource type="Material" uid="uid://c5khl0d7mavst" path="res://resources/toothmonster_glitch_material.tres" id="3_oxmw5"]
 [ext_resource type="Texture2D" uid="uid://kl0ed1vui0dn" path="res://assets/models/toothmonster_intestine.jpg" id="6_iv6rx"]

@@ -70,11 +70,11 @@ func _input(event):
 	if event.is_action_pressed("look left"):
 		is_looking_back = true
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "rotation_degrees", Vector3(0, 140, 0), 0.2)
+		tween.tween_property(self, "rotation_degrees", Vector3(0, 180, 0), 0.2)
 	elif event.is_action_pressed("look right"):
 		is_looking_back = true
 		var tween = get_tree().create_tween()
-		tween.tween_property(self, "rotation_degrees", Vector3(0, -140, 0), 0.2)
+		tween.tween_property(self, "rotation_degrees", Vector3(0, -180, 0), 0.2)
 	elif event.is_action_released("look left") or event.is_action_released("look right"):
 		is_looking_back = false
 		var tween = get_tree().create_tween()

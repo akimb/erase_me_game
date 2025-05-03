@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://3c0bv7nu2lbs"]
 
 [ext_resource type="PackedScene" uid="uid://crlk8idxtjw1r" path="res://assets/models/phone.glb" id="1_ohh38"]
-[ext_resource type="Script" path="res://scripts/phone.gd" id="2_37upd"]
+[ext_resource type="Script" uid="uid://ckohv0xsgr2bm" path="res://scripts/phone.gd" id="2_37upd"]
 [ext_resource type="Material" uid="uid://c34d8ninlnreo" path="res://resources/phone_atlas.tres" id="2_vgtvu"]
 [ext_resource type="FontFile" uid="uid://dvg71ayuh54rl" path="res://assets/models/LCDM2B__.TTF" id="4_d4aai"]
 

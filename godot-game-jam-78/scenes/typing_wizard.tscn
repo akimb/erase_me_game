@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://b7c1wn5c6n2y7"]
 
 [ext_resource type="FontFile" uid="uid://biecqt5mrvf20" path="res://assets/consolab.ttf" id="1_71qdp"]
-[ext_resource type="Script" path="res://scripts/typing_wizard_game.gd" id="1_m3m1k"]
+[ext_resource type="Script" uid="uid://cgv0n7iw45hrk" path="res://scripts/typing_wizard_game.gd" id="1_m3m1k"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_fmh46"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1x7mc"]

@@ -1,25 +1,35 @@
-[gd_scene load_steps=5 format=3 uid="uid://c5m3qoaxoo8ot"]
+[gd_scene load_steps=8 format=3 uid="uid://c5m3qoaxoo8ot"]
 
 [ext_resource type="PackedScene" uid="uid://3vemfyd77tsf" path="res://assets/models/light_switch.glb" id="1_jklfw"]
-[ext_resource type="Script" path="res://scripts/light_switch.gd" id="2_wcuca"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7xi6i"]
-albedo_color = Color(1, 0.857225, 0.599375, 1)
-emission_enabled = true
-emission = Color(0.694118, 0.596078, 0.415686, 1)
-emission_energy_multiplier = 0.2
+[ext_resource type="Script" uid="uid://dx4siqloufeq1" path="res://scripts/light_switch.gd" id="2_wcuca"]
+[ext_resource type="PackedScene" uid="uid://b2544d7jtyim3" path="res://assets/models/xury_light_switch.glb" id="3_h4oh8"]
+[ext_resource type="Texture2D" uid="uid://cevqky6b3vgcr" path="res://assets/models/xury_light_switch_LightSwitch.png" id="4_rtc5t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_5xuhn"]
 size = Vector3(2.1001, 6.9124, 4.41584)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtc5t"]
+albedo_texture = ExtResource("4_rtc5t")
+texture_filter = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dyjyh"]
+albedo_texture = ExtResource("4_rtc5t")
+emission_enabled = true
+emission = Color(1, 1, 0.533333, 1)
+emission_energy_multiplier = 0.1
+texture_filter = 0
+
 [node name="light_switch" node_paths=PackedStringArray("mesh_array") instance=ExtResource("1_jklfw")]
 transform = Transform3D(-4.37114e-09, 0, 0.1, 0, 0.1, 0, -0.1, 0, -4.37114e-09, 0, 0, 0)
 script = ExtResource("2_wcuca")
-mesh_array = [NodePath("Cube"), NodePath("Cube_001")]
+mesh_array = [NodePath("xury_light_switch/LightSwitch_Housing"), NodePath("xury_light_switch/LightSwitch_Switch")]
+
+[node name="Cube" parent="." index="0"]
+visible = false
 
 [node name="Cube_001" parent="." index="1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.227843, 0, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_7xi6i")
+visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0246582, 0.0511551, -0.0214043)
@@ -32,3 +42,15 @@ shadow_enabled = true
 spot_range = 42.3436
 spot_angle = 22.1341
 spot_angle_attenuation = 6.91804
+
+[node name="xury_light_switch" parent="." index="4" instance=ExtResource("3_h4oh8")]
+transform = Transform3D(-7.86805e-07, -6, 2.62268e-07, -5.24537e-07, -2.62268e-07, -6, 6, -7.86805e-07, -5.24537e-07, 0, 0, 0)
+
+[node name="LightSwitch_Housing" parent="xury_light_switch" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_rtc5t")
+
+[node name="LightSwitch_Switch" parent="xury_light_switch" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.859852, 0.510543, 0, -0.510543, 0.859852, 0, 0, 0)
+surface_material_override/0 = SubResource("StandardMaterial3D_dyjyh")
+
+[editable path="xury_light_switch"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://c4erv23iwfn4d"]
 
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="1_5qmxu"]
-[ext_resource type="Script" path="res://scripts/eraser_window.gd" id="1_vuihe"]
+[ext_resource type="Script" uid="uid://bdoxbbypek5vn" path="res://scripts/eraser_window.gd" id="1_vuihe"]
 [ext_resource type="Texture2D" uid="uid://ru6gd8ro27ln" path="res://ui/exit_button.png" id="2_mkp45"]
 [ext_resource type="Texture2D" uid="uid://d4fmurgqtai0e" path="res://ui/eraser_icon.png" id="3_k0j7a"]
 [ext_resource type="Texture2D" uid="uid://dt52hug01pbrn" path="res://ui/email_button_icon_pressed.png" id="4_y8vn6"]
@@ -73,8 +73,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_xli6k"]
 _data = {
-"RESET": SubResource("Animation_kcgga"),
-"spin_hourglass": SubResource("Animation_chfh3")
+&"RESET": SubResource("Animation_kcgga"),
+&"spin_hourglass": SubResource("Animation_chfh3")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oi57h"]
@@ -156,8 +156,8 @@ anchor_right = 1.0
 offset_left = -28.0
 offset_bottom = 28.0
 grow_horizontal = 0
-theme_override_colors/icon_pressed_color = Color(0.564706, 0.564706, 0.564706, 1)
 theme_override_colors/icon_hover_color = Color(0.666667, 0.666667, 0.666667, 1)
+theme_override_colors/icon_pressed_color = Color(0.564706, 0.564706, 0.564706, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_g4rsh")
 icon = ExtResource("2_mkp45")
 flat = true
@@ -235,7 +235,7 @@ layout_mode = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_xli6k")
+&"": SubResource("AnimationLibrary_xli6k")
 }
 
 [node name="ProgressBar" type="ProgressBar" parent="."]

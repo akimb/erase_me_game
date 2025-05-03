@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://bgxec2merl3nd"]
 
-[ext_resource type="Script" path="res://scripts/sound_bus.gd" id="1_mhstk"]
+[ext_resource type="Script" uid="uid://382qgq6f68u1" path="res://scripts/sound_bus.gd" id="1_mhstk"]
 [ext_resource type="AudioStream" uid="uid://bjmm70duroctm" path="res://sounds/busy_signal.ogg" id="2_hoqul"]
 [ext_resource type="AudioStream" uid="uid://bgl7t6vvw31ri" path="res://sounds/buzzing.ogg" id="3_apaeb"]
 [ext_resource type="AudioStream" uid="uid://bn7tcvuf3x46b" path="res://sounds/backrooms.ogg" id="4_dgft0"]

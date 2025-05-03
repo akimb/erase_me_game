@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://3uv0858gyf84"]
 
 [ext_resource type="PackedScene" uid="uid://bhmhautldw8ts" path="res://scenes/shader_overlay.tscn" id="1_5vdxt"]
-[ext_resource type="Script" path="res://scripts/win_screen.gd" id="1_5yos0"]
+[ext_resource type="Script" uid="uid://dvvjwfg8sinnr" path="res://scripts/win_screen.gd" id="1_5yos0"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="1_n1704"]
 
 [node name="Win Screen" type="Control"]

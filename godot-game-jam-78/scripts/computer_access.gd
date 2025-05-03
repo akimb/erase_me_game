@@ -47,6 +47,8 @@ func _input(event):
 			desk_camera.current = true
 			#computer_ui.line_edit.release_focus()
 			computer_ui.set_process_input(false)
+			#for programs in computer_ui.running_programs.get_children():
+				#programs.set_process_input(false)
 			Input.warp_mouse(DisplayServer.window_get_size() / 2)
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	if event is InputEventMouseButton:

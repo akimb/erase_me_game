@@ -18,7 +18,7 @@ func _on_sfx_slider_value_changed(value):
 	ProgressSignal.default_val = sfx_slider.value
 
 
-func _on_mouse_sensitivity_slider_value_changed(value):
+func _on_mouse_sensitivity_slider_value_changed(_value):
 	pass # Replace with function body.
 
 

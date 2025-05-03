@@ -52,7 +52,7 @@ func _full_progress_bar():
 	tween.tween_property(success, "visible", true, 0.2)
 	call_deferred("disable_game")
 	await tween.finished
-	get_parent().get_parent().get_parent().remove_child(self)
+	#get_parent().get_parent().get_parent().remove_child(self)
 	get_parent().get_parent().get_parent().queue_free()
 	
 func disable_game():

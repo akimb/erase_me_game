@@ -65,3 +65,6 @@ func _on_label_text_submitted(new_text):
 		SoundBus.parasite_goofy.play()
 	elif new_text == "penis":
 		SoundBus.goofy_ahh_sound.play()
+
+func _on_quit_pressed():
+	get_tree().quit()

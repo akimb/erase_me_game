@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://d14021tr0asi4"]
 
 [ext_resource type="Texture2D" uid="uid://d4fmurgqtai0e" path="res://ui/eraser_icon.png" id="1_obcbn"]
-[ext_resource type="Script" path="res://scripts/mr_erase_app.gd" id="2_gn7x2"]
+[ext_resource type="Script" uid="uid://ijkncsk6ufi4" path="res://scripts/mr_erase_app.gd" id="2_gn7x2"]
 [ext_resource type="FontFile" uid="uid://clxqmevbasqw4" path="res://assets/VCR_OSD_MONO_1.001.ttf" id="2_niotn"]
 [ext_resource type="PackedScene" uid="uid://c4erv23iwfn4d" path="res://scenes/eraser_window.tscn" id="4_frdli"]
 

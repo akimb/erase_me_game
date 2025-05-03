@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://d0tkhwa1s4hfm"]
 
-[ext_resource type="Script" path="res://scripts/flappy_frog_manager.gd" id="1_5ffxr"]
+[ext_resource type="Script" uid="uid://c74jl158y4aao" path="res://scripts/flappy_frog_manager.gd" id="1_5ffxr"]
 [ext_resource type="PackedScene" uid="uid://curl3mkeiojqa" path="res://scenes/flappy_frog.tscn" id="2_ij3mg"]
 [ext_resource type="Texture2D" uid="uid://dlc1qxdemi3jt" path="res://ui/brown_background.png" id="2_li021"]
 [ext_resource type="Texture2D" uid="uid://ru6gd8ro27ln" path="res://ui/exit_button.png" id="4_7iuy8"]
@@ -100,8 +100,8 @@ anchor_right = 1.0
 offset_left = -28.0
 offset_bottom = 28.0
 grow_horizontal = 0
-theme_override_colors/icon_pressed_color = Color(0.564962, 0.564962, 0.564962, 1)
 theme_override_colors/icon_hover_color = Color(0.666569, 0.666569, 0.666569, 1)
+theme_override_colors/icon_pressed_color = Color(0.564962, 0.564962, 0.564962, 1)
 theme_override_styles/focus = SubResource("StyleBoxEmpty_wec5n")
 icon = ExtResource("4_7iuy8")
 flat = true

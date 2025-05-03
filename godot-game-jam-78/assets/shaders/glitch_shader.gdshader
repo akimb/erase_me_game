@@ -27,7 +27,7 @@ void vertex() {
     enable_shift = float(random(trunc(adjusted_time * shake_speed)) < shake_rate);
 
     float offset_x = (random((trunc(VERTEX.y * shake_block_size) / shake_block_size) + adjusted_time) - 0.5) * shake_power * enable_shift;
-    VERTEX.x += offset_x;
+    VERTEX.x += offset_x * sin(TIME + 2.0 * VERTEX.y);
 }
 
 void fragment() {

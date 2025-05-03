@@ -29,6 +29,10 @@ func interact():
 		ui.bootup_sequence.visible = true
 		ui.start_bootup_animation()
 		ui.user_ui.visible = false
+		#print(ui.running_programs)
+		for programs in ui.running_programs.get_children():
+			programs.visible = false
+		#ui.running_programs.visible = false
 		ui.user_ui.process_mode = Node.PROCESS_MODE_DISABLED
 		
 		if monitor.computer_light.visible:

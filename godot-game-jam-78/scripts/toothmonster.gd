@@ -97,6 +97,9 @@ func patrol_inside():
 		
 	if (light_switch.light_on or monitor.computer_light.visible):
 		SoundBus.scream.play()
+		var camera_turn = get_tree().create_tween()
+		player_camera.set_process_input(false)
+		camera_turn.tween_property(player_camera, "rotation_degrees", Vector3(0, -180, 0), 0.2)
 		monster_state = MonsterState.KILL_PLAYER
 		#pass
 		
@@ -121,7 +124,7 @@ func exit_doorway():
 	#print("exit doorway")
 
 func kill_player():
-	move_monster_helper(player_camera.global_position - Vector3(0, 11, 0), move_outside_speed)
+	move_monster_helper(player_camera.global_position - Vector3(0, 11, 0), 15.0)
 	scary_music.stop()
 	current_inside_node_index = -1
 	if (!light_switch.light_on and !monitor.computer_light.visible):
@@ -129,6 +132,9 @@ func kill_player():
 	else:
 		if global_position.distance_to(player_camera.global_position - Vector3(0, 11, 0)) < 1.0:
 			get_tree().change_scene_to_packed(bsod)
+			SoundBus.backrooms.stop()
+			SoundBus.buzzing.stop()
+			SoundBus.ambience.stop()
 
 func move_monster_helper(pos : Vector3, speed : float):
 	if tween != null:

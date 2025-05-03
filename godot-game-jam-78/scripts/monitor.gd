@@ -23,6 +23,8 @@ func interact():
 		desk_camera.canvas_layer.visible = false
 		computer_access.diegetic_camera.current = true
 		computer_access.set_desk_camera(desk_camera)
+		
+		await get_tree().create_timer(0.1).timeout
 		computer_access.computer_ui.set_process_input(true)
 		computer_access._reset_camera()
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE

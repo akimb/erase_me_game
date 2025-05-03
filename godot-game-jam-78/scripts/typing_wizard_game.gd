@@ -79,6 +79,8 @@ func _on_button_pressed():
 	var cleaned_input_text : String = text_edit.text
 	if cleaned_input_text.rstrip(" \n\r\t") == target_text:
 		end_condition(true)
+	elif cleaned_input_text == "":
+		display_invalid()
 	else:
 		display_invalid()
 
@@ -108,7 +110,9 @@ func display_invalid():
 
 func end_condition(cond : bool):
 	panel.visible = true
-	
+	if count_down_progress == null:
+		display_invalid()
+		return
 	if cond:
 		SoundBus.erase_successful.play()
 		count_down_progress.kill()
@@ -123,7 +127,7 @@ func end_condition(cond : bool):
 		tween.tween_property(success, "visible", false, 0.2)
 		tween.tween_property(success, "visible", true, 0.2)
 		await tween.finished
-		print("hi")
+		#print("hi")
 	else:
 		SoundBus.erase_failed.play()
 		fail.visible = true
@@ -136,7 +140,7 @@ func end_condition(cond : bool):
 		tween.tween_property(fail, "visible", false, 0.2)
 		tween.tween_property(fail, "visible", true, 0.2)
 		await tween.finished
-	get_parent().get_parent().remove_child(self)
+	#get_parent().get_parent().remove_child(self)
 	get_parent().queue_free()
 
 func _on_progress_bar_value_changed(value):

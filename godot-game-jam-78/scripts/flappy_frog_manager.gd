@@ -17,6 +17,13 @@ func _ready():
 	pause_screen.visible = true
 	play_button.visible = true
 
+#func _process(_delta):
+	#
+	#var check_user_ui_on = get_parent()
+	
+	#if check_user_ui_on:
+	#print(check_user_ui_on)
+
 func _input(event):
 	if Input.is_action_just_pressed("jump") and can_play:
 		flappy_frog.process_mode = Node.PROCESS_MODE_INHERIT

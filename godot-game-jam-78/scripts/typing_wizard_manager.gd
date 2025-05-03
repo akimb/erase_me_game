@@ -33,7 +33,7 @@ func clamp_to_bounds(pos: Vector2) -> Vector2:
 	
 	pos.x = clamp(pos.x, 0, parent_rect.x - max_size.x)
 	pos.y = clamp(pos.y, 0, parent_rect.y - max_size.y)
-
+	
 	return pos
 
 func _on_button_pressed():
@@ -47,7 +47,6 @@ func _on_play_button_pressed():
 
 func _on_toolbar_mouse_entered():
 	mouse_in = true
-
 
 func _on_toolbar_mouse_exited():
 	mouse_in = false
